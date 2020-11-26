@@ -1,0 +1,103 @@
+# depslib dependency file v1.0
+1604280947 source:c:\users\ideapad 330\desktop\el unicornio cinefilo\hashmap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"hashmap.h"
+
+1604280947 c:\users\ideapad 330\desktop\el unicornio cinefilo\hashmap.h
+
+1604280947 source:c:\users\ideapad 330\desktop\el unicornio cinefilo\list.c
+	"list.h"
+	<stdlib.h>
+	<assert.h>
+
+1604280947 c:\users\ideapad 330\desktop\el unicornio cinefilo\list.h
+	<stdlib.h>
+	<stdio.h>
+
+1604280947 source:c:\users\ideapad 330\desktop\el unicornio cinefilo\treemap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"treemap.h"
+
+1604280947 c:\users\ideapad 330\desktop\el unicornio cinefilo\treemap.h
+
+1606353670 source:c:\users\ideapad 330\desktop\el unicornio cinefilo\funciones.c
+	"funciones.h"
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<dirent.h>
+
+1606353537 c:\users\ideapad 330\desktop\el unicornio cinefilo\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	"list.h"
+	"hashmap.h"
+	"treemap.h"
+
+1606353604 source:c:\users\ideapad 330\desktop\el unicornio cinefilo\main.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+	"hashmap.h"
+	"funciones.h"
+	"treemap.h"
+
+1606402600 source:c:\users\macar\desktop\el unicornio cinefilo\funciones.c
+	"funciones.h"
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<dirent.h>
+
+1606353537 c:\users\macar\desktop\el unicornio cinefilo\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	"list.h"
+	"hashmap.h"
+	"treemap.h"
+
+1604280947 c:\users\macar\desktop\el unicornio cinefilo\list.h
+	<stdlib.h>
+	<stdio.h>
+
+1604280947 c:\users\macar\desktop\el unicornio cinefilo\hashmap.h
+
+1604280947 c:\users\macar\desktop\el unicornio cinefilo\treemap.h
+
+1604280947 source:c:\users\macar\desktop\el unicornio cinefilo\hashmap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"hashmap.h"
+
+1604280947 source:c:\users\macar\desktop\el unicornio cinefilo\list.c
+	"list.h"
+	<stdlib.h>
+	<assert.h>
+
+1606402600 source:c:\users\macar\desktop\el unicornio cinefilo\main.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+	"hashmap.h"
+	"funciones.h"
+	"treemap.h"
+
+1604280947 source:c:\users\macar\desktop\el unicornio cinefilo\treemap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"treemap.h"
+
