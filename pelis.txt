@@ -1,0 +1,238 @@
+Halloween,1978,JohnCarpenter,R,terror,5.6
+The Thing,1982,JohnCarpenter,R,terror,5.3
+Psycho,1960,AlfredHitchcock,R,terror,4.1
+The Texas Chainsaw Massacre,1974,TobeHooper,R,terror/suspenso,6.7
+A Nightmare On Elm Street,1984,WesCraven,R, terror/suspenso,6.6
+The Blair Witch Project,1999,DanielMyrick/EduardoSánchez,R,terror/suspenso,5.1
+Jaws,1975,StevenSpielberg,PG-13,terror/suspenso,7.1
+The Conjuring,2013,JamesWan,R,terror,6.8
+It,2017,AndrésMuschietti,R,terror,6.4
+Friday The 13th,1980,SeanSCunningham,R,terror,4.3
+Mean Girls,2004,Mark Waters,PG-13,comedia,5.4
+Borat,2006,Jason Woliner,PG-13,comedia,5.9
+Tenacious D In The Pick Of Destiny,2006,Liam Lynch,R,comedia/musical,6.8
+Superbad,2007,Greg Mottola,PG-13,comedia,7.6
+Step brothers,2008,Adam McKay,PG-13,comedia,5.5
+Bridesmaids,2011,Paul Feig,PG-13,comedia,7.5
+The Nice Guys,2016,Shane Black,R,comedia/accion,6.2
+Zoolander,2001,Ben Stiller,PG-13,comedia,5.4
+Kung Fu Hustle,2004, Stephen Chow,PG-13,comedia,7.8
+Team America,2004,Trey Parker,PG-13,comedia/accion/animada,5.7
+The Hangover,2009,Todd Phillips,R,comedia,6.6
+Forrest Gump,1994,Robert Zemeckis,PG-13,comedia/romance/drama,8.2
+Piratas del Caribe: la maldición de la Perla Negra,2003,Gore Verbinski,PG-13,comedia/accion/aventura,7.2
+El Gran Hotel Budapest,2014,Wes Anderson,PG-13,comedia/drama/aventura,7.3
+El patriota,2000,Roland Emmerich,PG-13,historico/drama/accion,6.4
+300,2007,Zack Snyder,R,historico/accion,7.2
+Enter The Dragon,1973,Robert Clouse,PG-13,accion/artes marciales,7.0
+Escape From NewYork,1997,John Carpenter,PG-13,accion,6.1
+Lethal Weapon,1987,Richard Donner,PG-13,accion,6.7
+Die Hard,1988,John McTiernan,PG-13,accion,8.3
+Commando,1985,MarkL.Lester,PG-13,accion,5.1
+First Blood,1982,TedKotcheff,PG-13,accion,6.6
+The Rock,1996,MichaelBay,PG-13,accion,6.9
+Speed,1994,JanDeBont,PG-13,accion,5.9
+The Matrix,1999,Lana&LilyWachowski,PG-13,accion/ficcion,7.9
+John Wick,2014,Chad Stahelski & David Leitch,R,accion,6.3
+Crank,2006,Mark Neveldine & Brian Taylor,R,accion,6.1
+Transporter,2002,Corey Yuen,PG-13,accion/artes marciales,4.4
+The Nice Guys,2016,Shane Black,R,comedia/accion,6.2
+Team America,2004,Trey Parker,PG-13,comedia/accion/animadas,5.7
+Al límite del riesgo,1996,Ringo Lam,PG-13,artes marciales/accion,4.5
+Parque Jurásico,1993,Steven Spielberg,PG-13,aventura/ficcion/accion,8.1
+The Terminator,1984,James Cameron,PG-13,ficcion/accion,7.1
+Mad Max: Fury Road,2015,George Miller,PG-13,accion/aventura,7.1
+Yo-robot,2004,Alex Proyas,PG-13,accion/suspenso/ficcion,6.2
+Indiana Jones y el templo maldito,1984,Steven Spielberg,PG-13,accion/aventura,7.4
+La momia,1999,Stephen Sommers,PG-13,accion/aventura,6.2
+Piratas del Caribe: la maldición de la Perla Negra,2003,Gore Verbinski,PG-13,accion/aventura/comedia,7.2
+The Punisher,1987,Mark Goldblatt,PG-13,superheroes/accion,7.2
+Blade,1998,Stephen Norrington,PG-13,superheroes/accion,6.0
+X-Men,2000,Bryan Singer,PG-13,superheroes/accion,5.1
+Hulk,2003,Ang Lee,PG-13,superheroes/accion,6.8
+Spider-Man,2002,Sam Raimi,PG-13,superheroes/accion,6.3
+Hellboy,2004,Hellboy,PG-13,superheroes/accion,4.7
+Los 4 Fantásticos,2005,Tim Story,PG-13,superheroes/accion,4.1
+Ghost Rider: El motorista fantasma,2007,Mark Steven Johnson,PG-13,superheroes/accion,4.0
+Iron Man,2008,Jon Favreau,PG-13,superheroes/accion,7.9
+El Caballero Oscuro,2008,Christopher Nolan,PG-13,superheroes/accion,8.1
+Hancock,2008, ,PG-13,superheroes/accion,5.6
+Thor,2011,Peter Berg,PG-13,superheroes/accion,7.0
+Capitán América: El primer Vengador,2011,Joe Johnston,PG-13,superheroes/accion,6.8
+Los Vengadores,2012,Joss Whedon,PG-13,superheroes/accion,8.1
+El Hombre de Acero,2013,Zack Snyder,PG-13,superheroes/accion,5.8
+The Shape Of Water,2017,Guillermo del Toro,PG-13,romance,6.5
+Titanic,1997,James Cameron,PG,romance/drama,6.8
+Love Actually,2003,Richard Curtis,PG,romance,6.8
+Ghost,1990,Jerry Zucker,PG,romance,6.5
+My Best Friend's Wedding,1997,P.J. Hogan,PG,romance,5.9
+Love Story,1970,Arthur Hiller,PG,romance,6.4
+Pretty Woman,1992,Garry Marshall,PG,romance,6.3
+Gone with the Wind,1959, Victor Fleming,PG,romance,7.9
+Destination Wedding,2018,Victor Levin,PG,romance,4.6
+No strings attached,2011,Ivan Reitman,PG-13,romance/comedia,5.1
+La La Land,2016, Damien Chazelle,PG,musical/romance,7.5
+High School Musical, 2006, Kenny Ortega,G,musical/romance,5.8
+Forrest Gump,1994,Robert Zemeckis,PG-13,romance/drama/comedia,8.2
+The Bodyguard,2004,Panna Rittikrai/Petchtai Wongkamlao,PG-13,artes marciales,5.7
+Danny The Dog,2005,Louis Leterrier,R,artes marciales,6.1
+La furia de china,1973,Shan-Hsi Ting,PG-13,artes ,6.4
+Ong-Bak,2003,Prachya Pinkaew,PG-13,artes marciales,5.9
+Nacer para morir,2003,Andrzej Bartkowiak,PG-13,artes marciales,5.0
+Kill Bill Volumen 1,2003,Quentin Tarantino,R,artes marciales,7.6
+Kill Bill Volumen 2,2004,Quentin Tarantino,R,artes marciales,7.6
+La leyenda del luchador borracho,1994,Chia-Liang Liu/Jackie Chan,PG-13,artes marciales,6.4
+Enter The Dragon,1973,Robert Clouse,PG-13,accion/artes marciales,7.0
+La leyenda del dragón rojo,1994,Jing Wong/Corey Yuen,PG-13,artes marciales,5.2
+Al límite del riesgo,1996,Ringo Lam,PG-13,artes marciales/accion,4.5
+Doble impacto,1991,Sheldon Lettich,PG-13,artes marciales,4.1
+Coco,2017,Lee Unkrich/Adrian Molina,G,infantiles/animada,8.0
+La oveja Shaun. La película,2015,Mark Burton/Richard Starzak,G,infantiles/animada,6.4
+Polar Express,2004,Robert Zemeckis,G,infantiles/animadas,5.8
+Robots,2005,Chris Wedge/Carlos Saldanha,G,infantiles/animadas,6.0
+Jimmy Neutron: el niño inventor,2001,John A. Davis,G,infantiles/animadas,5.0
+Lilo & Stitch,2002,Chris Sanders/Dean DeBlois,G,infantiles/animadas,6.3
+Monster INC,2001,Pete Docter/David Silverman/Lee Unkrich,G,animadas/infantiles,7.6
+Los Muppets, 2011, James Bobin,G,musical/infantiles,5.7
+Charlie y la fábrica de chocolate, 2005, Tim Burton,PG,musical/infantiles,6.6
+Blancanieves y los siete enanitos, 1937, David Hand,G,musical/infantiles/animadas,6.8
+El rey y yo, 1999,  Richard Rich,G,musical/infantiles,7.0
+Mi vecino Totoro,1988,Hayao Miyazaki,PG,infantil/animadas/anime,8.8
+Team America,2004,Trey Parker,PG-13,comedia/accion/animadas,5.7
+La oveja Shaun. La película,2015,Mark Burton/Richard Starzak,G,infantiles/animada,6.4
+Coco,2017,Lee Unkrich/Adrian Molina,G,infantiles/animada,8.0
+El cadaver de la novia,2005,Tim Burton/Mike Johnson,PG,animadas,7.2
+Polar Express,2004,Robert Zemeckis,G,infantiles/animadas,5.8
+Robots,2005,Chris Wedge/Carlos Saldanha,G,infantiles/animadas,6.0
+Los increíbles,2004,Brad Bird,G,animadas,7.0
+La dama y el vagabundo,1955, Clyde Geronimi/Wilfred Jackson/Hamilton Luske,G,animadas,5.5
+Buscando a Nemo,2003,Lee Unkrich/Andrew Stanton,G,animadas,7.5
+Haru en el reino de los gatos,2002,Hiroyuki Morita,G,animadas/anime,6.3
+El rey león,1994,Roger Allers/Rob Minkoff,G,animadas,6.5
+La princesa Mononoke,1997,Hayao Miyazaki,PG-13,animadas/anime,8.0
+Jimmy Neutron: el niño inventor,2001,John A. Davis,G,infantiles/animadas,5.0
+El viaje de Chihiro,2001,Hayao Miyazaki,PG,anime/animada,8.1
+Lilo & Stitch,2002,Chris Sanders/Dean DeBlois,G,infantiles/animadas,6.3
+Ice Age: La Edad de Hielo,2002,Carlos Saldanha/Chris Wedge,G,animadas,7.3
+Metrópolis,2001,Rintaro,PG,anime/animadas,6.9
+Monster INC,2001,Pete Docter/David Silverman/Lee Unkrich,G,animadas/infantiles,7.6
+Shrek,2001,Andrew Adamson/Vicky Jenson,G,animadas,7.7
+Akira,1988,Katsuhiro Otomo,R,animadas/ficcion/anime,7.6
+Mi vecino Totoro,1988,Hayao Miyazaki,PG,animadas/anime/infantil,8.8
+El increíble castillo vagabundo,2004,Hayao Miyazaki,PG,aventura/animadas/anime,7.8
+La tumba de las luciérnagas,1988,Isao Takahata,PG-13,animadas/drama/anime,7.8
+Ghost in the Shell,1995,Mamoru Oshii,PG-13,animadas/suspenso/anime,7.5
+Arrietty y el mundo de los diminutos,2010,Hirosama Yonebayashi,G,animadas/ficcion/anime,7.2
+Blancanieves y los siete enanitos, 1937, David Hand,G,animadas/musical/infantiles,6.8
+Cry-Baby,1990,John Waters,PG,musical,6.1
+El hombre de mimbre,1973,Robin Hardy,G,musical,7.0 
+Sweeney Todd,2007, Tim Burton,R,musical,6.8
+Todo sobre mi desmadre, 2010, Nicholas Stoller, PG-13, musical/comedia,5.1
+Los Muppets, 2011, James Bobin,G,musical/infantiles,5.7
+La La Land,2016, Damien Chazelle,G,musical/romance,7.5
+Charlie y la fábrica de chocolate, 2005, Tim Burton,PG,musical/infantiles,6.6
+Blancanieves y los siete enanitos, 1937, David Hand,G,musical/infantiles/animadas,6.8
+El rey y yo, 1999,  Richard Rich,G,musical/infantiles,7.0
+High School Musical, 2006, Kenny Ortega,G,musical/romance,5.8
+Tenacious D In The Pick Of Destiny,2006,Liam Lynch,R,comedia/musical,6.8
+El pianista,2002,Roman Polanski,PG-13,drama/musical,8.3
+La naranja mecánica,1971,Stanley Kubrick,PG-13,drama/ficcion,8.2
+Parque Jurásico,1993,Steven Spielberg,PG-13,aventura/ficcion/accion,8.1
+The Terminator,1984,James Cameron,PG-13,ficcion/accion,7.1
+E.T.,1982, Steven Spielberg,G,ficcion,7.5
+The Matrix,1999,Lana&LilyWachowski,PG-13,accion/ficcion,7.9
+El hoyo,2019,Galder Gaztelu-Urrutia,PG-13,ficcion/suspenso,6.4
+Akira,1988,Katsuhiro Otomo,R,ficcion/anime/animadas,7.6
+Ex Machina,2015,Alex Garland,PG-13,ficcion/drama/suspenso,7.1
+Interstellar,2014,Christopher Nolan,PG-13,ficcion,7.9
+Yo-robot,2004,Alex Proyas,PG-13,ficcion/suspenso/accion,6.2
+Arrietty y el mundo de los diminutos,2010,Hirosama Yonebayashi,G,ficcion/anime/animadas,7.2
+Las crónicas de Narnia: El león-la bruja y el armario,2005, Andrew Adamson,G,ficcion/aventura,5.8
+Jumanji,1995,Joe Johnston,G,ficcion/aventura,5.3
+El Señor de los Anillos: El retorno del rey,2003,Peter Jackson,PG-13,ficcion/aventura,8.2
+The Punisher,1987,Mark Goldblatt,PG-13,superheroes/accion,7.2
+Blade,1998,Stephen Norrington,PG-13,superheroes/accion,6.0
+X-Men,2000,Bryan Singer,PG-13,superheroes/accion,5.1
+Hulk,2003,Ang Lee,PG-13,superheroes/accion,6.8
+Spider-Man,2002,Sam Raimi,PG-13,superheroes/accion,6.3
+Hellboy,2004,Hellboy,PG-13,superheroes/accion,4.7
+Los 4 Fantásticos,2005,Tim Story,PG-13,superheroes/accion,4.1
+Ghost Rider: El motorista fantasma,2007,Mark Steven Johnson,PG-13,superheroes/accion,4.0
+Iron Man,2008,Jon Favreau,PG-13,superheroes/accion,7.9
+El Caballero Oscuro,2008,Christopher Nolan,PG-13,superheroes/accion,8.1
+Hancock,2008, ,PG-13,superheroes/accion,5.6
+Thor,2011,Peter Berg,PG-13,superheroes/accion,7.0
+Capitán América: El primer Vengador,2011,Joe Johnston,PG-13,superheroes/accion,6.8
+Los Vengadores,2012,Joss Whedon,PG-13,superheroes/accion,8.1
+El Hombre de Acero,2013,Zack Snyder,PG-13,superheroes/accion,5.8
+El padrino,1972,Francis Ford Coppola,R,drama,9.0
+El héroe de Berlín,2016,Stephen Hopkins,PG-13,historico/drama,6.3
+Invictus,2010,Clint Eastwood,PG-13,historico/drama,7.0
+Dunkerque,2020,Christopher Nolan,PG-13,historico/drama,7.1
+El puente de los espías,2015,Steven Spielberg,PG-13,drama/historico/suspenso,6.8
+War Horse,2012,Steven Spielberg,PG-13,historico/drama,6.5
+María reina de Escocia,2019,Josie Rourke,PG-13,historico/drama,6.0
+El patriota,2000,Roland Emmerich,PG-13,historico/drama/accion,6.4
+Taxi Driver,1976,Martin Scorsese,PG-13,suspenso/drama,8.2
+La naranja mecánica,1971,Stanley Kubrick,PG-13,drama/ficcion,8.2
+Titanic,1997,James Cameron,G,drama/romance,6.8
+Saving Private Ryan,1998,Steven Spielberg,PG-13,drama,7.8
+Rocky,1976,John G. Avildsen,PG-13,drama,5.9
+El retrato de Dorian Gray,1945, Albert Lewin,PG-13,drama,5.0
+Diamantes en bruto,2019,Josh y Benny Safdie,PG-13,drama/suspenso,6.6
+Zodiac,2007,David Fincher,PG-13,drama/suspenso,6.8
+El pianista,2002,Roman Polanski,PG-13,drama/musical,8.3
+Forrest Gump,1994,Robert Zemeckis,PG-13,drama/comedia/romance,8.2
+Ex Machina,2015,Alex Garland,PG-13,drama/ficcion/suspenso,7.1
+La tumba de las luciérnagas,1988,Isao Takahata,PG-13,drama/anime/animadas,7.8
+El Gran Hotel Budapest,2014,Wes Anderson,PG-13,drama/aventura/comedia,7.3
+12 años de esclavitud,2013,Steve McQueen,PG-13,historico/drama,7.3
+Jesús de Nazaret,1979,Franco Zeffirelli,PG,historico/drama,5.0
+Parque Jurásico,1993,Steven Spielberg,PG-13,aventura/ficcion/accion,8.1
+Mad Max: Fury Road,2015,George Miller,PG-13,aventura/accion,7.1
+El increíble castillo vagabundo,2004,Hayao Miyazaki,G,aventura/anime/animadas,7.8
+Indiana Jones y el templo maldito,1984,Steven Spielberg,PG-13,aventura/accion,7.4
+La momia,1999,Stephen Sommers,PG-13,aventura/accion,6.2
+Robin Hood: Príncipe de los ladrones,1991,Kevin Reynolds,PG-13,aventura,6.5
+Piratas del Caribe: la maldición de la Perla Negra,2003,Gore Verbinski,PG-13,aventura/accion/comedia,7.2
+Náufrago,2000,Robert Zemeckis,PG-13,aventura,7.2
+El Gran Hotel Budapest,2014,Wes Anderson,PG-13,aventura/comedia/drama,7.3
+Las crónicas de Narnia: El león-la bruja y el armario,2005, Andrew Adamson,G,aventura/ficcion,5.8
+Jumanji,1995,Joe Johnston,G,aventura/ficcion,5.3
+El Señor de los Anillos: El retorno del rey, 2003,Peter Jackson,PG-13,aventura/ficcion,8.2
+El puente de los espías,2015,Steven Spielberg,PG-13,suspenso/historico/drama,6.8
+The Texas Chainsaw Massacre,1974,TobeHooper,R,terror/suspenso,6.7
+A Nightmare On ElmStreet,1984,WesCraven,R, terror/suspenso,6.6
+The Blair Witch Project,1999,DanielMyrick/EduardoSánchez,R,terror/suspenso,5.1
+Jaws,1975,StevenSpielberg,PG-13,terror/suspenso,7.1
+Taxi Driver,1976,Martin Scorsese,PG-13,suspenso/drama.8.2
+Atracción fatal, 1980, Adrian Lyne,PG-13,suspenso,6.2
+Diamantes en bruto,2019,Josh y Benny Safdie,PG-13,suspenso/drama,6.6
+El hoyo,2019,Galder Gaztelu-Urrutia,PG-13,suspenso/ficcion,6.4
+Zodiac,2007,David Fincher,PG-13,suspenso/drama,6.8
+Tu hijo,2018,Miguel Ángel Vivas,PG-13,suspenso,6.1
+Perdida,2014,David Fincher,PG-13,suspenso,7.3
+Ex Machina,2015,Alex Garland,PG-13,suspenso/drama/ficcion,7.1
+Yo-robot,2004,Alex Proyas,PG-13,suspenso/ficcion/accion,6.2
+Ghost in the Shell,1995,Mamoru Oshii,PG-13,suspenso/anime/animadas,7.5
+La princesa Mononoke,1997,Hayao Miyazaki,PG-13,anime/animadas,8.0
+Haru en el reino de los gatos,2002,Hiroyuki Morita,G,animadas/anime,6.3
+El viaje de Chihiro,2001,Hayao Miyazaki,PG,anime/animada,8.1
+Metrópolis,2001,Rintaro,PG,anime/animadas,6.9
+Akira,1988,Katsuhiro Otomo,R,anime/ficcion/animadas,7.6
+Mi vecino Totoro,1988,Hayao Miyazaki,PG,anime/infantil/animadas,8.8
+El increíble castillo vagabundo,2004,Hayao Miyazaki,PG,anime/aventura/animadas,7.8
+La tumba de las luciérnagas,1988,Isao Takahata,PG-13,anime/drama/animadas,7.8
+Ghost in the Shell,1995,Mamoru Oshii,PG-13,anime/suspenso/animadas,7.5
+Arrietty y el mundo de los diminutos,2010,Hirosama Yonebayashi,G,anime/ficcion/animadas,7.2
+El último samurái,2004,Edward Zwick,PG-13,historico,6.8
+12 años de esclavitud,2013,Steve McQueen,PG-13,historico/drama,7.3
+300,2007,Zack Snyder,R,historico/accion,7.2
+El patriota,2000,Roland Emmerich,PG-13,historico/drama/accion,6.4
+Jesús de Nazaret,1979,Franco Zeffirelli,PG,historico/drama,5.0
+El héroe de Berlín,2016,Stephen Hopkins,PG-13,historico/drama,6.3
+Invictus,2010,Clint Eastwood,PG-13,historico/drama,7.0
+Dunkerque,2020,Christopher Nolan,PG-13,historico/drama,7.1
+El puente de los espías,2015,Steven Spielberg,PG-13,historico/drama/suspenso,6.8
+War Horse,2012,Steven Spielberg,PG-13,historico/drama,6.5
+María reina de Escocia,2019,Josie Rourke,PG-13,historico/drama,6.0

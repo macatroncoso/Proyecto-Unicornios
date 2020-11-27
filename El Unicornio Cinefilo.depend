@@ -50,14 +50,14 @@
 	"funciones.h"
 	"treemap.h"
 
-1606402600 source:c:\users\macar\desktop\el unicornio cinefilo\funciones.c
+1606443689 source:c:\users\macar\desktop\el unicornio cinefilo\funciones.c
 	"funciones.h"
 	<stdbool.h>
 	<stdio.h>
 	<stdlib.h>
 	<dirent.h>
 
-1606353537 c:\users\macar\desktop\el unicornio cinefilo\funciones.h
+1606443283 c:\users\macar\desktop\el unicornio cinefilo\funciones.h
 	<stdio.h>
 	<stdlib.h>
 	<stdbool.h>
@@ -87,7 +87,7 @@
 	<stdlib.h>
 	<assert.h>
 
-1606402600 source:c:\users\macar\desktop\el unicornio cinefilo\main.c
+1606443336 source:c:\users\macar\desktop\el unicornio cinefilo\main.c
 	<stdio.h>
 	<stdlib.h>
 	"list.h"

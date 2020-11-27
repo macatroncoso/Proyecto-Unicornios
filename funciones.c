@@ -261,10 +261,86 @@ int crearUsuario(){
 
 }
 
+void getTypes(List * typesList, char * types){
+
+//function that get the different types of the game :)
+
+    char caracter[2] = ",";
+    char * type;
+
+    type = strtok(types, caracter); //separates the string if there's more than one type//
+    while(type != NULL){
+
+        if(type[0] == ' '){
+
+            size_t si_ze = strlen(type);
+            int i;
+            for (i = 0 ; i < si_ze - 1; i++){
+
+                type[i] = type[i + 1];
+
+            }
+
+            type[si_ze - 1] = '\0';
+
+        }
+        push_back(typesList, type);
+        type = strtok(NULL, caracter);
+
+    }
+
+}
 
 
 
 
 
 
+Pelicula * crearPeli(char * nombre,  List * genero, char *  director , char *  ranking, char  * clasificacionEdad, int  anio){
 
+    Pelicula * peliwi = (Pelicula *) malloc (sizeof(Pelicula));
+    peliwi->nombre = nombre;
+    peliwi->genero = genero;
+    peliwi->director = director;
+    peliwi->ranking = ranking;
+    peliwi->clasificacionEdad = clasificacionEdad;
+    peliwi->anio = anio;
+    return peliwi;
+
+
+}
+
+void importarpelis(HashMap* Pelis){
+    //very important function that imports all the games from a csv file
+
+    system("cls");
+
+    FILE * fp;
+
+        fp = fopen("Pelis.txt", "r"); //opens the file in read
+
+    char line [1024];
+
+    while( fgets(line, 1023, fp) != NULL ){  //read and get every field of the csv file
+
+        char * nombre = get_csv_field(line, 0);
+        int anio = atoi(get_csv_field(line, 1));
+
+        List * Geneross = create_list();
+
+        char * director = get_csv_field(line, 2);
+        char * clasificacionEdad = get_csv_field(line, 3);
+        char * Genero = get_csv_field(line, 4);
+        getTypes(Geneross, Genero);
+
+        char * ranking = get_csv_field(line, 5);
+
+        Pelicula * nuevaPeli = crearPeli(nombre, anio, Geneross, director, clasificacionEdad,ranking);
+        if (searchMap(Pelis, nombre) == NULL){
+            insertMap(Pelis, nuevaPeli->nombre ,nuevaPeli);
+
+    }
+
+}
+
+}

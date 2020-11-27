@@ -13,7 +13,7 @@
 typedef struct Pelicula{
     char * nombre;
     char * genero;
-    int year;
+    int anio;
     int clasificacionEdad;
     char * director;
     char * ranking;
@@ -37,6 +37,12 @@ int lower_than_string(void* , void* );
 int lower_than_int(void* , void* );
 
 void cargarDatosUsuario(char *);
+
+void getTypes(List * , char * );
+
+Pelicula * crearPeli(char * ,  List * , char *   , char *  , char  * , int );
+
+void importarpelis(HashMap* );
 
 //retorna 1 si ingresa correctamente, 0 en caso contario
 int ingresarUsuario();

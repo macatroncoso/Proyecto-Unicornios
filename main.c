@@ -8,6 +8,10 @@
 int main()
 {
 
+    HashMap * Pelis = createMap(500);
+
+     importarpelis( Pelis);
+
     int opcion = 1;
     int salir = 0;
 
