@@ -218,7 +218,7 @@ int crearUsuario(){
 
             }
 
-            //para comprobar si es que el archivo está vacio o no
+            //para comprobar si es que el archivo estÃ¡ vacio o no
             fseek (archivoCSV, 0, SEEK_END);
             long lSize = ftell(archivoCSV);
 
@@ -335,7 +335,7 @@ void importarpelis(HashMap* Pelis){
 
         char * ranking = get_csv_field(line, 5);
 
-        Pelicula * nuevaPeli = crearPeli(nombre, anio, Geneross, director, clasificacionEdad,ranking);
+        Pelicula * nuevaPeli = crearPeli(nombre,Geneross, director, ranking, clasificacionEdad, anio) ;
         if (searchMap(Pelis, nombre) == NULL){
             insertMap(Pelis, nuevaPeli->nombre ,nuevaPeli);
 
