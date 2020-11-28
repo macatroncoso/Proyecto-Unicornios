@@ -261,11 +261,70 @@ int crearUsuario(){
 
 }
 
+void BusquedaPorGenero(HashMap * map){
+    system("cls");
+    printf("Ingrese el genero que desea buscar: ");
+    char genero_[50];
+    fflush(stdin);
+    scanf("%[^\n]s", genero_);
+    fflush(stdin);
+
+    List * lista = create_list();
+
+    Pair * par = firstMap(map);
+    Pelicula * peli = par->value;
+    while(par!=NULL){
+
+        lista = peli->genero;
+        char * gen = first(lista);
+        if (gen!= NULL && strcmp(gen, genero_)==0){
+            printf("%s\n", peli->nombre);
+        }
+        else{
+            while(gen!=NULL){
+            gen=next(lista);
+            if (gen!=NULL && strcmp(gen, genero_)==0){
+                printf("%s\n", peli->nombre);
+            }
+            }
+        }
+
+        par = nextMap(map);
+        peli = par->value;
+    }
+    system("pause");
+    system("cls");
+}
+
+
+void BusquedaPorDirector(HashMap *map){
+    system("cls");
+
+    printf("Ingrese el nombre y apellido del director que desea buscar: ");
+    char name[50];
+    fflush(stdin);
+    scanf("%[^\n]s", name);
+    fflush(stdin);
+
+    Pair * par = firstMap(map);
+    Pelicula * peli = par->value;
+    while(par!=NULL){
+        if (strcmp((char*)peli->director, (char*)name)==0){
+            printf("%s\n", peli->nombre);
+        }
+        par = nextMap(map);
+        peli = par->value;
+    }
+    system("pause");
+    system("cls");
+
+}
+
 void getTypes(List * typesList, char * types){
 
 //function that get the different types of the game :)
 
-    char caracter[2] = ",";
+    char caracter[2] = "/";
     char * type;
 
     type = strtok(types, caracter); //separates the string if there's more than one type//
