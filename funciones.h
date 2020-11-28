@@ -36,6 +36,10 @@ int lower_than_string(void* , void* );
 
 int lower_than_int(void* , void* );
 
+void BusquedaPorGenero(HashMap *);
+
+void BusquedaPorDirector(HashMap *);
+
 void cargarDatosUsuario(char *);
 
 void getTypes(List * , char * );
