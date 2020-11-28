@@ -335,7 +335,7 @@ void importarpelis(HashMap* Pelis){
 
         char * ranking = get_csv_field(line, 5);
 
-        Pelicula * nuevaPeli = crearPeli(nombre,Geneross, director, ranking, clasificacionEdad, anio) ;
+        Pelicula * nuevaPeli = crearPeli(nombre,Geneross, director, ranking, clasificacionEdad, anio);
         if (searchMap(Pelis, nombre) == NULL){
             insertMap(Pelis, nuevaPeli->nombre ,nuevaPeli);
 
