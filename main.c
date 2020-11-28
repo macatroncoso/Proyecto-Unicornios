@@ -70,6 +70,14 @@ int main()
             scanf("%d", &option);
             if ((option > 9) || (option < 1))
                printf("Opcion Invalida, por favor seleccione una opcion valida del menu <3 \n");
+            else{
+                if (option == 4){
+                    BusquedaPorDirector(Pelis);
+                }
+                if (option == 2){
+                    BusquedaPorGenero(Pelis);
+                }
+            }
 
         }while ((option > 9) || (option < 1));  //this "While" validates that the option entered is valid!
 
