@@ -398,8 +398,105 @@ void importarpelis(HashMap* Pelis){
         if (searchMap(Pelis, nombre) == NULL){
             insertMap(Pelis, nuevaPeli->nombre ,nuevaPeli);
 
+        }
+
     }
 
 }
 
+void funcionRanking (TreeMap * rankingTree){
+    int opcion;
+    printf("******Submenu de ranking******\n\n");
+    printf("(1) Para mostrar las peliculas mediante un ranking especifico\n");
+    printf("(2) Para mostrar las peliculas por orden de ranking, de mayor a menor\n");
+    printf("Ingrese la opcion que desee (1 o 2) \n\n");
+    do{
+        scanf("%d",&opcion);
+        if(opcion != 1 && opcion != 2){
+            printf("La opcion ingresada es invalida\n");
+            printf("Elija la funcion 1 o 2\n");
+        }
+    }while (opcion != 1 && opcion != 2);
+
+    if (opcion == 1){
+        rankingDado(rankingTree);
+    }
+    else{
+        rankingMayMen(rankingTree);
+    }
+    return;
+}
+
+void rankingDado (TreeMap * rankingTree){
+
+    char * ranking[4];
+    List * listaAux;
+    Pelicula * resultAux;
+    printf("Ingrese el ranking de la pelicula que desea buscar\n");
+    printf("El numero debe estar entre 1 y 10\n");
+
+    //do{
+        scanf("%s",&ranking);
+        /*if ( ranking <= 10 && ranking >= 0 ){
+            printf("Por favor, ingrese un número válido\n");
+        }
+    }while (ranking <= 10 && ranking >= 0);*/
+    //ranking = int(ranking*10);
+    listaAux = searchTreeMap(rankingTree, ranking);
+    if (listaAux == NULL){
+        printf("El ranking ingresado no pertenece a alguna pelicula de la base de datos\n");
+        return;
+    }
+    //ranking = float(ranking/10);
+    printf("Pelicula/as con ranking %f\n", ranking);
+
+    resultAux= first(listaAux);
+    while (resultAux != NULL){
+        showMovieInfo(resultAux);
+        resultAux= next(listaAux);
+    }
+    printf("\n\n");
+    return;
+
+}
+
+void rankingMayMen (TreeMap * rankingTree){
+    printf("\n");
+
+    if (rankingTree == NULL) return; // If tree is empty
+    Pelicula * auxPeli; //auxVar to save info and show it
+    List * auxLista;
+    auxLista= lastTreeMap (rankingTree); //gets the last value, higher from map
+
+    while (auxLista != NULL){
+
+        auxPeli= first(auxLista);
+        while(auxPeli != NULL){
+            showMovieInfo (auxPeli);
+            auxPeli= next(auxLista);
+        }
+        auxLista= backTreeMap(rankingTree); //Previous value, lower than current
+    }
+    printf("\n\n");
+    return;
+}
+
+void showMovieInfo (Pelicula * auxPeli){ //Muestra la info completa del dato.
+    printf("%s, ", auxPeli->nombre); //Muestra el nombre
+    printf("%d, ", auxPeli->anio); //Muestra el AÑO
+
+    char * type = first(auxPeli->genero); //primer dato de lista
+
+    while(type){
+
+        printf("%s, ", type); //print el genero
+        type = next(auxPeli->genero); //itera.
+
+    }
+
+     printf("%s, ", auxPeli->director);// Printea el nombre del director
+     printf("%s, ", auxPeli->clasificacionEdad);
+     printf("%s\n", auxPeli->ranking);
+
+     return;
 }
