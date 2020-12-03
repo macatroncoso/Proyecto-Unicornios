@@ -54,5 +54,12 @@ int ingresarUsuario();
 //retorna 1 si el usuario se crea correctamente, 0 en caso contario
 int crearUsuario();
 
+void rankingMayMen(TreeMap * );
+
+void rankingDado (TreeMap * );
+
+void funcionRanking (TreeMap * );
+
+void showMovieInfo (Pelicula *);
 
 #endif // funciones_h
