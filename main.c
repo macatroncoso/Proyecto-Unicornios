@@ -9,8 +9,9 @@ int main()
 {
 
     HashMap * Pelis = createMap(500);
-
-     importarpelis( Pelis);
+    //HashMap * rankingMap = createMap(500);
+    TreeMap * rankingTree = createTreeMap(lower_than_string);
+    importarpelis(Pelis, rankingTree);
 
     int opcion = 1;
     int salir = 0;
@@ -77,6 +78,10 @@ int main()
                 if (option == 2){
                     BusquedaPorGenero(Pelis);
                 }
+                if (option == 7){
+                    funcionRanking(rankingTree);
+                }
+
             }
 
         }while ((option > 9) || (option < 1));  //this "While" validates that the option entered is valid!
