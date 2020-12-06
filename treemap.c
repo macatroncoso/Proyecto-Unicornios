@@ -71,13 +71,14 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
 
     while (aux != NULL) {
         parent = aux;
-
         if (tree->lower_than(key,aux->key)) {
             aux = aux->left;
         } else if (tree->lower_than(aux->key,key)) {
             aux = aux->right;
+        } else if (isEqual(tree, key, aux->key)){
+            aux = aux->right;
         } else {
-            return;
+        return;
         }
     }
 
@@ -254,5 +255,15 @@ void * lastTreeMap(TreeMap * tree) { //This function return the higher value (ke
     if (tree->current == NULL) return NULL;
 
     return tree->current->value; 
+}
+
+void imprimemeEnOrden(TreeNode * node){ //el nodo tiene que ser la raiz del arbol
+     if (node == NULL) return;
+
+     imprimemeEnOrden(node->left);
+
+     printf("Anio: %d \t Nombre pelicula: %s \n", node->key, node->value);
+
+     imprimemeEnOrden(node->right);
 }
 
