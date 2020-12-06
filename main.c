@@ -11,7 +11,8 @@ int main()
     HashMap * Pelis = createMap(500);
     //HashMap * rankingMap = createMap(500);
     TreeMap * rankingTree = createTreeMap(lower_than_string);
-    importarpelis(Pelis, rankingTree);
+    TreeMap * Peliwis = createTreeMap(lower_than_int);
+    importarpelis(Pelis, rankingTree, Peliwis);
 
     int opcion = 1;
     int salir = 0;
@@ -80,6 +81,9 @@ int main()
                 }
                 if (option == 7){
                     funcionRanking(rankingTree);
+                }
+                if (option == 3){
+                    BusquedaPorAnio(Peliwis);
                 }
 
             }
