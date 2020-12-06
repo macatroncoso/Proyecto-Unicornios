@@ -40,13 +40,15 @@ void BusquedaPorGenero(HashMap *);
 
 void BusquedaPorDirector(HashMap *);
 
+void BusquedaPorAnio(TreeMap *);
+
 void cargarDatosUsuario(char *);
 
 void getTypes(List * , char * );
 
 Pelicula * crearPeli(char * ,  List * , char *   , char *  , char  * , int );
 
-void importarpelis(HashMap* );
+void importarpelis(HashMap*, TreeMap*, TreeMap * );
 
 //retorna 1 si ingresa correctamente, 0 en caso contario
 int ingresarUsuario();
