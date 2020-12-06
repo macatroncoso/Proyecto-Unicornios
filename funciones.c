@@ -42,8 +42,8 @@ int lower_than_string(void* key1, void* key2){
 }
 
 int lower_than_int(void* key1, void* key2){ //This function compare 2 keys *int
-    int k1 = *((int*) (key1));
-    int k2 = *((int*) (key2));
+    int k1 = (int*) (key1);
+    int k2 = (int*) (key2);
     return k1<k2;
 }
 
@@ -288,9 +288,11 @@ void BusquedaPorGenero(HashMap * map){
             }
             }
         }
-
         par = nextMap(map);
-        peli = par->value;
+        if (par!=NULL){
+          peli = par->value;
+        }
+        else break;
     }
     system("pause");
     system("cls");
@@ -299,26 +301,75 @@ void BusquedaPorGenero(HashMap * map){
 
 void BusquedaPorDirector(HashMap *map){
     system("cls");
-
     printf("Ingrese el nombre y apellido del director que desea buscar: ");
     char name[50];
     fflush(stdin);
     scanf("%[^\n]s", name);
     fflush(stdin);
-
     Pair * par = firstMap(map);
     Pelicula * peli = par->value;
     while(par!=NULL){
-        if (strcmp((char*)peli->director, (char*)name)==0){
+        if (strcmp(peli->director, name)==0){
             printf("%s\n", peli->nombre);
         }
         par = nextMap(map);
-        peli = par->value;
+        if (par!=NULL){
+          peli = par->value;
+        }
+        else break;
     }
     system("pause");
     system("cls");
-
 }
+
+void BusquedaPorAnio(TreeMap * map){
+    system("cls");
+    int option;
+    int anio_;
+
+    do{
+            printf("Busqueda por anio: \n");
+            printf("Opcion 1: Busqueda por un anio en particular \n");
+            printf("Opcion 2: Mostrar todas las peliculas de la base de datos ordenados de menor a mayor \n");
+            scanf("%d",&option);
+            if ((option > 2) || (option < 1)){
+                printf("Ingrese una opcion valida! \n");
+            }
+            if (option == 1){
+                do{
+                    printf("Ingrese el anio que desea buscar: ");
+                    fflush(stdin);
+                    scanf("%d",&anio_);
+                    fflush(stdin);
+                    if (searchTreeMap(map, anio_)== NULL){
+                        printf("No se encontro el anio, ingrese otro anio \n");
+                    }
+
+                }while(searchTreeMap(map,anio_)==NULL);
+
+                void * name = searchTreeMap(map, anio_);
+                if (name==NULL) break;
+                while(isEqual(map,map->current->key,anio_)){
+                    printf("Anio: %d \t Nombre pelicula: %s\n",map->current->key, name);
+                    name = nextTreeMap(map);
+
+                }
+
+
+
+
+            }
+            else{
+                printf("Peliculas ordenadas de menor a mayor: \n");
+                imprimemeEnOrden(map->root);
+            }
+
+    }while ((option > 2) || (option < 1));
+
+    system("pause");
+    system("cls");
+}
+
 
 void getTypes(List * typesList, char * types){
 
@@ -369,7 +420,7 @@ Pelicula * crearPeli(char * nombre,  List * genero, char *  director , char *  r
 
 }
 
-void importarpelis(HashMap* Pelis){
+void importarpelis(HashMap* Pelis, TreeMap *ranking, TreeMap *peliwis){
     //very important function that imports all the games from a csv file
 
     system("cls");
@@ -393,15 +444,13 @@ void importarpelis(HashMap* Pelis){
         getTypes(Geneross, Genero);
 
         char * ranking = get_csv_field(line, 5);
-
         Pelicula * nuevaPeli = crearPeli(nombre,Geneross, director, ranking, clasificacionEdad, anio);
         if (searchMap(Pelis, nombre) == NULL){
             insertMap(Pelis, nuevaPeli->nombre ,nuevaPeli);
 
         }
-
+        insertTreeMap(peliwis,anio , nombre);
     }
-
 }
 
 void funcionRanking (TreeMap * rankingTree){
