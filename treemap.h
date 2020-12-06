@@ -21,4 +21,6 @@ void * backTreeMap(TreeMap * tree); //Go to the previous node with high value, n
 
 void * lastTreeMap (TreeMap * tree); //This function return the higher value (key) from tree.
 
+void imprimemeEnOrden(TreeNode * map);
+
 #endif /* TREEMAP_h */
