@@ -94,7 +94,7 @@ char * toString(int id){
 
 }
 
-void cargarDatosUsuario(char * nombreUsuario){
+void cargarDatosUsuario(char * nombreUsuario){ //se cargan los datos del usuario
 
     printf("Se cargan los datos\n");
     return;
@@ -120,7 +120,7 @@ int esNombreValido(char * nombreUsuario){
 
 }
 
-int usuarioExiste(char * nombreUsuario){
+int usuarioExiste(char * nombreUsuario){ //se verifica que el usuario exista
 
     FILE * usuariosCSV = fopen("Usuarios.csv", "r");
     if(usuariosCSV == NULL){
@@ -153,7 +153,7 @@ int usuarioExiste(char * nombreUsuario){
 
 }
 
-int ingresarUsuario(){
+int ingresarUsuario(){ /* en base a la verificacion de usuario se ingresa un nombre para acceder en caso de que este exista en la base de datos, de lo contrario se solicita la creacion de este*/
 
     char nombreUsuario[30];
 
@@ -180,7 +180,7 @@ int ingresarUsuario(){
 
 }
 
-int crearUsuario(){
+int crearUsuario(){ /*se crea un usuario nuevo realizando las comprobaciones de no repitencia de nombres ademas de las solicitudes de caracteres que puede poseer*/
 
     char nombreUsuario[30];
 
@@ -261,7 +261,8 @@ int crearUsuario(){
 
 }
 
-void BusquedaPorGenero(HashMap * map){
+void BusquedaPorGenero(HashMap * map){ 
+/*se realiza la busqueda en la base de datos de acuerdo al genero solicitado entregando todas las peliculas que correspondan al genero */
     system("cls");
     printf("Ingrese el genero que desea buscar: ");
     char genero_[50];
@@ -300,6 +301,7 @@ void BusquedaPorGenero(HashMap * map){
 
 
 void BusquedaPorDirector(HashMap *map){
+/*se busca en la base de datos la pelicula por nombre del director y se muestran por pantalla */    
     system("cls");
     printf("Ingrese el nombre y apellido del director que desea buscar: ");
     char name[50];
@@ -323,6 +325,7 @@ void BusquedaPorDirector(HashMap *map){
 }
 
 void BusquedaPorAnio(TreeMap * map){
+/*esta funcion busca las peliculas por el año y da la opcion de buscarlas por año especifico o entrega todas las peliculas ordenadas de menor a mayor*/
     system("cls");
     int option;
     int anio_;
@@ -373,12 +376,12 @@ void BusquedaPorAnio(TreeMap * map){
 
 void getTypes(List * typesList, char * types){
 
-//function that get the different types of the game :)
+/*función que obtiene los diferentes tipos de peliculas*/
 
     char caracter[2] = "/";
     char * type;
 
-    type = strtok(types, caracter); //separates the string if there's more than one type//
+    type = strtok(types, caracter); /*separa la cadena si hay más de un tipo*/
     while(type != NULL){
 
         if(type[0] == ' '){
@@ -421,17 +424,17 @@ Pelicula * crearPeli(char * nombre,  List * genero, char *  director , char *  r
 }
 
 void importarpelis(HashMap* Pelis, TreeMap *ranking, TreeMap *peliwis){
-    //very important function that imports all the games from a csv file
+    /*funcion muy importante que importa las peliculas desde el archivo csv*/
 
     system("cls");
 
     FILE * fp;
 
-        fp = fopen("Pelis.txt", "r"); //opens the file in read
+        fp = fopen("Pelis.txt", "r"); /*abre el archivo para lectura*/
 
     char line [1024];
 
-    while( fgets(line, 1023, fp) != NULL ){  //read and get every field of the csv file
+    while( fgets(line, 1023, fp) != NULL ){  /*lee y obtiene todos los campos del archivo csv*/
 
         char * nombre = get_csv_field(line, 0);
         int anio = atoi(get_csv_field(line, 1));
@@ -474,6 +477,7 @@ void importarpelis(HashMap* Pelis, TreeMap *ranking, TreeMap *peliwis){
 }
 
 void funcionRanking (TreeMap * rankingTree){
+/*se entrega un submenu que permite buscar las peliculas por un ranking de mayor a menor o en su defecto por una calificaion especifica*/
     int opcion;
     printf("******Submenu de ranking******\n\n");
     printf("(1) Para mostrar las peliculas mediante un ranking especifico\n");
@@ -497,7 +501,7 @@ void funcionRanking (TreeMap * rankingTree){
 }
 
 void rankingDado (TreeMap * rankingTree){
-
+/*la funcion solicita ingresar el ranking y muestra si es que existe alguna pelicula que responda a esta puntuacion*/
     fflush(stdin);
     char * ranking[50];
     List * listaAux;
@@ -532,11 +536,10 @@ void rankingDado (TreeMap * rankingTree){
 void rankingMayMen (TreeMap * rankingTree){
     printf("\n");
 
-    if (rankingTree == NULL) return; // If tree is empty
-    Pelicula * auxPeli; //auxVar to save info and show it
+    if (rankingTree == NULL) return; /*si el arbol esta vacio*/
+    Pelicula * auxPeli; /* auxVar para guardar información y mostrarla*/
     List * auxLista;
-    auxLista= lastTreeMap (rankingTree); //gets the last value, higher from map
-
+    auxLista= lastTreeMap (rankingTree); /*obtiene el último valor, más alto del mapa*/
     while (auxLista != NULL){
 
         auxPeli= first(auxLista);
@@ -544,12 +547,13 @@ void rankingMayMen (TreeMap * rankingTree){
             showMovieInfo (auxPeli);
             auxPeli= next(auxLista);
         }
-        auxLista= backTreeMap(rankingTree); //Previous value, lower than current
+        auxLista= backTreeMap(rankingTree); /*Valor anterior, inferior al actual*/
     }
     printf("\n\n");
     return;
 }
 void busquedaPorClasif (HashMap * clasifMap){
+/*esta funcion permite buscarlas peliculas segun la clasificacion de edad y de corroborar que la clasificacion ingresada exista*/
     char * clasif[50];
     List * listaAux;
     Pelicula * resultAux;
