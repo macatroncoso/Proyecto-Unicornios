@@ -64,4 +64,6 @@ void funcionRanking (TreeMap * );
 
 void showMovieInfo (Pelicula *);
 
+void busquedaPorClasif (HashMap *);
+
 #endif // funciones_h
