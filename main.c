@@ -46,6 +46,7 @@ int main()
                 break;
                 case 2: salir = crearUsuario();
                 break;
+                    
 
             }
 
@@ -84,6 +85,9 @@ int main()
                 }
                 if (option == 3){
                     BusquedaPorAnio(Peliwis);
+                }
+                if (option == 6){
+                    busquedaPorClasif(clasifMap);
                 }
 
             }
