@@ -448,7 +448,7 @@ void importarpelis(HashMap* Pelis, TreeMap *ranking, TreeMap *peliwis){
         if (searchMap(Pelis, nombre) == NULL){
             insertMap(Pelis, nuevaPeli->nombre ,nuevaPeli);
             
-        if (searchTreeMap(rankingTree, ranking) == NULL){
+            if (searchTreeMap(rankingTree, ranking) == NULL){
                 List * listaRanking =create_list();
                 push_back(listaRanking, nuevaPeli);
                 insertTreeMap(rankingTree, ranking, listaRanking);
@@ -456,8 +456,18 @@ void importarpelis(HashMap* Pelis, TreeMap *ranking, TreeMap *peliwis){
             else{
                 List * auxList= searchTreeMap(rankingTree, ranking);
                 push_back(auxList, nuevaPeli);
+               
             }
 
+            if (searchMap(clasifMap, clasificacionEdad) == NULL ){
+                List * listaClasif = create_list();
+                push_back(listaClasif, nuevaPeli);
+                insertMap(clasifMap, clasificacionEdad, listaClasif);
+            }
+            else{
+                List * auxList= searchMap(clasifMap, clasificacionEdad);
+                push_back(auxList, nuevaPeli);
+            }
         }
         insertTreeMap(peliwis,anio , nombre);
     }
@@ -488,26 +498,26 @@ void funcionRanking (TreeMap * rankingTree){
 
 void rankingDado (TreeMap * rankingTree){
 
-    char * ranking[4];
+    fflush(stdin);
+    char * ranking[50];
     List * listaAux;
     Pelicula * resultAux;
     printf("Ingrese el ranking de la pelicula que desea buscar\n");
     printf("El numero debe estar entre 1 y 10\n");
+    fflush(stdin);
 
     //do{
-        scanf("%s",&ranking);
-        /*if ( ranking <= 10 && ranking >= 0 ){
-            printf("Por favor, ingrese un número válido\n");
-        }
-    }while (ranking <= 10 && ranking >= 0);*/
-    //ranking = int(ranking*10);
+    scanf("%s", &ranking);
+
     listaAux = searchTreeMap(rankingTree, ranking);
+
+    resultAux= first(listaAux);
     if (listaAux == NULL){
         printf("El ranking ingresado no pertenece a alguna pelicula de la base de datos\n");
         return;
     }
-    //ranking = float(ranking/10);
-    printf("Pelicula/as con ranking %f\n", ranking);
+
+    printf("Pelicula/as con ranking %s\n", ranking);
 
     resultAux= first(listaAux);
     while (resultAux != NULL){
@@ -539,23 +549,34 @@ void rankingMayMen (TreeMap * rankingTree){
     printf("\n\n");
     return;
 }
+void busquedaPorClasif (HashMap * clasifMap){
+    char * clasif[50];
+    List * listaAux;
+    Pelicula * resultAux;
+    printf("Por favor ingrese la clasificacion de edad mostrar peliculas\n");
+    scanf(" %s",&clasif);
 
-void showMovieInfo (Pelicula * auxPeli){ //Muestra la info completa del dato.
-    printf("%s, ", auxPeli->nombre); //Muestra el nombre
-    printf("%d, ", auxPeli->anio); //Muestra el AÑO
+    if (clasifMap == NULL){
+        printf("No hay peliculas guardadas en la base de datos\n");
+        return;
+    }
+    if (searchMap(clasifMap,clasif)==NULL){
+        printf("La clasificacion ingresada no pertenece a alguna pelicula de la base de datos\n");
+        return;
+    }
+    listaAux= searchMap(clasifMap,clasif);
 
-    char * type = first(auxPeli->genero); //primer dato de lista
+    printf("Pelicula/as con clasificacion %s\n " , clasif);
 
-    while(type){
+    resultAux= first(listaAux);
 
-        printf("%s, ", type); //print el genero
-        type = next(auxPeli->genero); //itera.
+
+    while (resultAux != NULL){
+        showMovieInfo(resultAux);
+        //if (->next == NULL)return;
+        resultAux= next(listaAux);
 
     }
-
-     printf("%s, ", auxPeli->director);// Printea el nombre del director
-     printf("%s, ", auxPeli->clasificacionEdad);
-     printf("%s\n", auxPeli->ranking);
-
-     return;
+    printf("\n\n");\
+    return;
 }
