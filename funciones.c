@@ -447,6 +447,16 @@ void importarpelis(HashMap* Pelis, TreeMap *ranking, TreeMap *peliwis){
         Pelicula * nuevaPeli = crearPeli(nombre,Geneross, director, ranking, clasificacionEdad, anio);
         if (searchMap(Pelis, nombre) == NULL){
             insertMap(Pelis, nuevaPeli->nombre ,nuevaPeli);
+            
+        if (searchTreeMap(rankingTree, ranking) == NULL){
+                List * listaRanking =create_list();
+                push_back(listaRanking, nuevaPeli);
+                insertTreeMap(rankingTree, ranking, listaRanking);
+            }
+            else{
+                List * auxList= searchTreeMap(rankingTree, ranking);
+                push_back(auxList, nuevaPeli);
+            }
 
         }
         insertTreeMap(peliwis,anio , nombre);
