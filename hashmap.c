@@ -9,8 +9,6 @@ typedef struct Pair Pair;
 typedef struct HashMap;
 int enlarge_called=0;
 
-
-
 struct HashMap {
     Pair ** buckets;
     long size; //cantidad de datos/pairs en la tabla
@@ -46,7 +44,6 @@ int is_equal(void* key1, void* key2){
     if(strcmp((char*)key1,(char*)key2) == 0) return 1;
     return 0;
 }
-
 
 void insertMap(HashMap * map, char * key, void * value) {
 int position = hash(key,map->capacity);
@@ -85,9 +82,6 @@ for (i=0;i<oldcap;i++){
 }
 }
 
-
-
-
 HashMap * createMap(long capacity) {
   HashMap * mappsi = (HashMap*) malloc(sizeof(HashMap));
   mappsi->buckets = (Pair **) calloc(capacity, sizeof(Pair *));
@@ -96,6 +90,7 @@ HashMap * createMap(long capacity) {
   mappsi-> current = -1;
 return mappsi;
 }
+
 
 void eraseMap(HashMap * map,  char * key) {
  int iwi = hash(key,map->capacity);
@@ -119,11 +114,8 @@ void eraseMap(HashMap * map,  char * key) {
 void * searchMap(HashMap * map,  char * key) {
 
     int possibly = hash(key,map->capacity);
-
     int i;
-
     for (i = possibly; possibly < map->capacity; i++){
-
         if (map->buckets[i] != NULL && map->buckets[i]->key != NULL){
             if (is_equal(key, map->buckets[i]->key ) == 1){
                 map->current = i;
@@ -133,7 +125,6 @@ void * searchMap(HashMap * map,  char * key) {
             if(i == map->capacity - 1) i = 0;
         }
         else{
-
             break;
 
         }
@@ -168,7 +159,6 @@ int i;
  }
     return NULL;
 }
-
 
 Pair * nextMap(HashMap * map) {
 int i;
