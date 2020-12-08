@@ -23,13 +23,11 @@ int main()
        printf("Opcion 1: Ingresar si es que ya eres un usuario existente \n\n");
        printf("Opcion 2: Crea un usuario nuevo el cual nombre debe ser alfanumero y UNICO, \n");
        printf("no pueden haber dos usuarios con el mismo nombre. \n\n");
-
-        printf("Opcion 1 <3 : Ingresar\n");
-        printf("Opcion 2 <3 : Crear Usuario\n\n");
-
-        printf("Ingrese una opcion: ");
-
-        scanf("%d", &opcion);
+       printf("Opcion 1 <3 : Ingresar\n");
+       printf("Opcion 2 <3 : Crear Usuario\n\n");
+       printf("Ingrese una opcion: ");
+       
+       scanf("%d", &opcion);
 
         if(opcion != 1 && opcion != 2){
 
@@ -94,17 +92,9 @@ int main()
 
         }while ((option > 9) || (option < 1));  //this "While" validates that the option entered is valid!
 
-
         if(option == 9){
-
             break;  //breaks the program
-
         }
-
     }
-
-
-
-
     return 0;
 }
