@@ -10,7 +10,8 @@
 #include "treemap.h"
 
 
-typedef struct Pelicula{
+typedef struct Pelicula
+{
     char * nombre;
     char * genero;
     int anio;
@@ -19,7 +20,8 @@ typedef struct Pelicula{
     char * ranking;
 } Pelicula;
 
-typedef struct Usuario{
+typedef struct Usuario
+{
     char * username;
     int password;
     List * Peliculas;
