@@ -719,7 +719,7 @@ Pelicula * crearPeli(char * nombre, int  anio,  char *  director, char  * clasif
 }
 
 void importarpelis(HashMap* Pelis, TreeMap *rankingTree, TreeMap *peliwis, HashMap * clasifMap,HashMap* PelisDirector){
-    //very important function that imports all the games from a csv file
+    /*funcion importante que importa todos los archivos del archivo csv*/
 
     system("cls");
 
