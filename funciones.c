@@ -14,7 +14,6 @@ char * _strdup (const char *s) {
     return (char *) memcpy (new, s, len);
 }
 
-
 char *get_csv_field (char * tmp, int k) {
 
     char * tmpDup = _strdup(tmp);
@@ -53,15 +52,15 @@ int lower_than_string(void* key1, void* key2){
     return 0;
 }
 
-int lower_than_int(void* key1, void* key2){ //This function compare 2 keys *int
+int lower_than_int(void* key1, void* key2){ 
+/*esta funcion compara 2 keys int*/
     int k1 = (int*) (key1);
     int k2 = (int*) (key2);
     return k1<k2;
 }
 
 char * toString(int id){
-
- //function that convert a string to a int
+/*Función que convierte una string a un int*/
     int digitos = 0;
     int aux = id;
     int numAlreves = 0;
@@ -107,31 +106,23 @@ char * toString(int id){
 }
 
 int esNombreValido(char * nombreUsuario){
-
+/*se valida el u¿nombre del usuario*/
     size_t length = strlen(nombreUsuario);
     int i;
 
     for (i = 0 ; i < length ; i++){
-
         if(isalpha(nombreUsuario[i]) == 0 && isdigit(nombreUsuario[i]) == 0){
-
-            return 0;
-
+        return 0;
         }
-
     }
-
     return 1;
-
 }
 
 int usuarioExiste(char * nombreUsuario){
-
+/*se verifica que el usuario exista*/
     FILE * usuariosCSV = fopen("Usuarios.csv", "r");
     if(usuariosCSV == NULL){
-
-        printf("\nError");
-
+    printf("\nError");
     }
 
     char linea[2048];
@@ -142,20 +133,14 @@ int usuarioExiste(char * nombreUsuario){
     int cont = 1;
 
     while(usuarioObtenido != NULL){
-
         if(strcmp(usuarioObtenido, nombreUsuario) == 0){
-
-            return 1;
-
+        return 1;
         }
 
         usuarioObtenido = get_csv_field(linea, cont);
         cont++;
-
     }
-
     return 0;
-
 }
 
 Usuario * crearUsuario(char * username){
@@ -172,8 +157,7 @@ Usuario * crearUsuario(char * username){
 }
 
 void cargarDatosUsuario(Usuario * usuario){
-
-    //se cargan los favoritos
+    /*se cargan los los datos favoritos del usuario*/
     char nombreArchivo[70];
 
     strcpy(nombreArchivo, "Usuarios/");
@@ -195,7 +179,7 @@ void cargarDatosUsuario(Usuario * usuario){
     fclose(fp);
     linea[0] = '\0';
 
-    //se cargan los amigos
+    /*se cargan los amigos*/
 
     char nombreArchivoAmigos[70];
 
@@ -224,7 +208,7 @@ void cargarDatosUsuario(Usuario * usuario){
 }
 
 int ingresarUsuario(Usuario ** usuario){
-
+/*en base a la verificacion de usuario se ingresa un nombre para acceder en caso de que este exista en la base de datos, de lo contrario se solicita la creacion de este*/
     char nombreUsuario[30];
 
     printf("\nIngrese el nombre del usuario existente: ");
@@ -240,12 +224,11 @@ int ingresarUsuario(Usuario ** usuario){
 
     }
     else{
-
+/*aqui se solicita el crear el usuario de no existir el ingresado*/
         printf("\nEL usuario no se encuentra, por favor, cree un nuevo usuario\n\n");
         system("pause");
         system("cls");
         return 0;
-
     }
 
     return 1;
@@ -253,6 +236,7 @@ int ingresarUsuario(Usuario ** usuario){
 }
 
 void BusquedaPorAnio(TreeMap * map){
+/*esta funcion busca las peliculas por el año y da la opcion de buscarlas por año especifico o entrega todas las peliculas ordenadas de menor a mayor*/
     system("cls");
     int option;
     int anio_;
@@ -297,7 +281,7 @@ void BusquedaPorAnio(TreeMap * map){
 }
 
 int nuevoUsuario(Usuario ** usuario){
-
+/*se crea un usuario nuevo realizando las comprobaciones de no repitencia de nombres ademas de las solicitudes de caracteres que puede poseer*/
     char nombreUsuario[30];
 
     printf("\nIngrese el nombre del usuario nuevo: ");
@@ -318,7 +302,7 @@ int nuevoUsuario(Usuario ** usuario){
 
         if(!usuarioExiste(nombreUsuario)){
 
-            fp = fopen(nombreArchivo, "w"); //creamos el nuevo archivo
+            fp = fopen(nombreArchivo, "w"); /*creamos el nuevo archivo*/
             if(fp == NULL){
 
                 printf("\nError al crear el archivo\n\n");
@@ -334,11 +318,11 @@ int nuevoUsuario(Usuario ** usuario){
 
             }
 
-            //para comprobar si es que el archivo está vacio o no
+            /*para comprobar si es que el archivo está vacio o no*/
             fseek (archivoCSV, 0, SEEK_END);
             long lSize = ftell(archivoCSV);
 
-            //si es que esta vacio agregamos sin coma al principio
+            /*si es que esta vacio agregamos sin coma al principio*/
             if(lSize == 0){
 
                 fprintf(archivoCSV, "%s", nombreUsuario);
@@ -352,7 +336,7 @@ int nuevoUsuario(Usuario ** usuario){
 
             }
 
-            //luego reservamos memoria para un dato usuario y lo asignamos al usuario pasado por parametro
+            /*luego reservamos memoria para un dato usuario y lo asignamos al usuario pasado por parametro*/
             *usuario = crearUsuario(nombreUsuario);
 
         }
@@ -384,7 +368,7 @@ int nuevoUsuario(Usuario ** usuario){
 }
 
 void BusquedaPorGenero(HashMap * map){
-
+/*se realiza la busqueda en la base de datos de acuerdo al genero solicitado entregando todas las peliculas que correspondan al genero */
     system("cls");
     printf("Ingrese el genero que desea buscar: ");
     char genero_[50];
@@ -422,7 +406,7 @@ void BusquedaPorGenero(HashMap * map){
 }
 
 void BusquedaPorDirector(HashMap *PelisDirector){
-
+/*se busca en la base de datos la pelicula por nombre del director y se muestran por pantalla */    
     char * director[50];
     List * listaAux;
     Pelicula * resultAux;
@@ -435,8 +419,8 @@ void BusquedaPorDirector(HashMap *PelisDirector){
         printf("No hay peliculas guardadas en la base de datos\n");
         return;
     }
-
-    if (searchMap(PelisDirector,director)==NULL){
+/**/
+    if (searchMap(PelisDirector,director)==NULL){/*se valida que el director tenga alguna pelicula en la lista*/
         printf("El director ingresado no pertenece a alguna pelicula de la base de datos\n");
         return;
     }
@@ -458,32 +442,26 @@ void BusquedaPorDirector(HashMap *PelisDirector){
 }
 
 void showMovieInformation(Pelicula * peli){
-
-
-  // this function is very important to our program, because it's used in almost all the functions that search by a category
+/*esta función es muy importante para nuestro programa, porque se usa en casi todas las funciones que buscan por categoría*/
     printf("\n");
     printf("Nombre de la pelicula: %s\n", peli->nombre);
     printf("Anio de la Pelicula: %d\n", peli->anio);
 
-    printf("Director/es de la Pelicula:%s\n",peli->director); //print the pokemon types
+    printf("Director/es de la Pelicula:%s\n",peli->director); /*imprime el director de la pelicula*/
 
-       printf("Clasificacion de la pelicula: %s\n", peli->clasificacionEdad);
+    printf("Clasificacion de la pelicula: %s\n", peli->clasificacionEdad);
 
-    printf("Genero/s de la Pelicula:\n"); //print the pokemon types
+    printf("Genero/s de la Pelicula:\n"); /*imprime el genero de la pelicula*/
 
-    char * type = first(peli->genero); //access to the List of types
+    char * type = first(peli->genero); /*accede a la lista de generos*/
 
     while(type){
 
-        printf("    %s\n", type); //print the types
-        type = next(peli->genero); //proceed to next type
+        printf("    %s\n", type); /*imprime el genero*/
+        type = next(peli->genero); /*va al siguiente genero*/
 
     }
-
      printf("Ranking de la pelicula: %s\n", peli->ranking);
-
-
-
 }
 
 void peliculasfab(HashMap * Pelis,TreeMap * rankingTree,TreeMap* Peliwis,HashMap* clasifMap,HashMap*PelisDirector){
@@ -671,7 +649,7 @@ void peliculasfab(HashMap * Pelis,TreeMap * rankingTree,TreeMap* Peliwis,HashMap
 
 void getTypes(List * typesList, char * types){
 
-//function that get the different types of the game :)
+/*esta funcion obtiene los diferentes tipos de peliculas*/ 
 
     char caracter[2] = "/";
     char * type;
