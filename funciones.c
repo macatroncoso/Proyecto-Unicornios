@@ -14,6 +14,7 @@ char * _strdup (const char *s) {
     return (char *) memcpy (new, s, len);
 }
 
+
 char *get_csv_field (char * tmp, int k) {
 
     char * tmpDup = _strdup(tmp);
@@ -29,6 +30,17 @@ char *get_csv_field (char * tmp, int k) {
 
         token = strtok(NULL, character);
         i++;
+    }
+
+    if(token != NULL){
+
+        int i;
+        for ( i = 0 ; i < strlen(token) ; i++){
+
+            if(token[i] == '\n') token[i] = '\0';
+
+        }
+
     }
 
     return token;
@@ -94,13 +106,6 @@ char * toString(int id){
 
 }
 
-void cargarDatosUsuario(char * nombreUsuario){ //se cargan los datos del usuario
-
-    printf("Se cargan los datos\n");
-    return;
-
-}
-
 int esNombreValido(char * nombreUsuario){
 
     size_t length = strlen(nombreUsuario);
@@ -120,7 +125,7 @@ int esNombreValido(char * nombreUsuario){
 
 }
 
-int usuarioExiste(char * nombreUsuario){ //se verifica que el usuario exista
+int usuarioExiste(char * nombreUsuario){
 
     FILE * usuariosCSV = fopen("Usuarios.csv", "r");
     if(usuariosCSV == NULL){
@@ -153,7 +158,72 @@ int usuarioExiste(char * nombreUsuario){ //se verifica que el usuario exista
 
 }
 
-int ingresarUsuario(){ /* en base a la verificacion de usuario se ingresa un nombre para acceder en caso de que este exista en la base de datos, de lo contrario se solicita la creacion de este*/
+Usuario * crearUsuario(char * username){
+
+    Usuario * usuario = (Usuario *) malloc (sizeof(Usuario));
+    if(usuario == NULL) printf("Error\n\n");
+
+    usuario->username = _strdup(username);
+    usuario->Favoritos = create_list();
+    usuario->UnicornFriend = create_list();
+
+    return usuario;
+
+}
+
+void cargarDatosUsuario(Usuario * usuario){
+
+    //se cargan los favoritos
+    char nombreArchivo[70];
+
+    strcpy(nombreArchivo, "Usuarios/");
+    strcat(nombreArchivo, usuario->username);
+    strcat(nombreArchivo, "Favoritos.csv");
+
+    FILE * fp = fopen(nombreArchivo, "r");
+    char linea[1024];
+    fgets(linea, 1023, fp);
+
+    int cont = 0;
+
+    while(get_csv_field(linea, cont) != NULL){
+
+        push_back(usuario->Favoritos, get_csv_field(linea, cont));
+        cont++;
+    }
+
+    fclose(fp);
+    linea[0] = '\0';
+
+    //se cargan los amigos
+
+    char nombreArchivoAmigos[70];
+
+    strcpy(nombreArchivoAmigos, "Usuarios/");
+    strcat(nombreArchivoAmigos, usuario->username);
+    strcat(nombreArchivoAmigos, ".csv");
+
+    fp = fopen(nombreArchivoAmigos, "r");
+
+    fgets(linea, 1023, fp);
+
+    cont = 0;
+
+    while(get_csv_field(linea, cont) != NULL){
+
+        push_back(usuario->UnicornFriend, get_csv_field(linea, cont));
+        cont++;
+    }
+
+    fclose(fp);
+
+    printf("\nDatos cargados correctamente\n\n");
+    system("pause");
+    system("cls");
+
+}
+
+int ingresarUsuario(Usuario ** usuario){
 
     char nombreUsuario[30];
 
@@ -165,22 +235,68 @@ int ingresarUsuario(){ /* en base a la verificacion de usuario se ingresa un nom
 
     if(usuarioExiste(nombreUsuario)){
 
-        cargarDatosUsuario(nombreUsuario);
+        *usuario = crearUsuario(nombreUsuario);
+        cargarDatosUsuario(*usuario);
 
     }
     else{
 
         printf("\nEL usuario no se encuentra, por favor, cree un nuevo usuario\n\n");
+        system("pause");
+        system("cls");
         return 0;
 
     }
 
     return 1;
 
-
 }
 
-int crearUsuario(){ /*se crea un usuario nuevo realizando las comprobaciones de no repitencia de nombres ademas de las solicitudes de caracteres que puede poseer*/
+void BusquedaPorAnio(TreeMap * map){
+    system("cls");
+    int option;
+    int anio_;
+
+    do{
+            printf("Busqueda por anio: \n");
+            printf("Opcion 1: Busqueda por un anio en particular \n");
+            printf("Opcion 2: Mostrar todas las peliculas de la base de datos ordenados de menor a mayor \n");
+            scanf("%d",&option);
+            if ((option > 2) || (option < 1)){
+                printf("Ingrese una opcion valida! \n");
+            }
+            if (option == 1){
+                do{
+                    printf("Ingrese el anio que desea buscar: ");
+                    fflush(stdin);
+                    scanf("%d",&anio_);
+                    fflush(stdin);
+                    if (searchTreeMap(map, anio_)== NULL){
+                        printf("No se encontro el anio, ingrese otro anio \n");
+                    }
+
+                }while(searchTreeMap(map,anio_)==NULL);
+
+                void * name = searchTreeMap(map, anio_);
+                if (name==NULL) break;
+                while(isEqual(map,map->current->key,anio_)){
+                    printf("Anio: %d \t Nombre pelicula: %s\n",map->current->key, name);
+                    name = nextTreeMap(map);
+
+                }
+            }
+            else{
+                printf("Peliculas ordenadas de menor a mayor: \n");
+                imprimemeEnOrden(map->root);
+            }
+
+    }while ((option > 2) || (option < 1));
+
+    system("pause");
+    system("cls");
+}
+
+int nuevoUsuario(Usuario ** usuario){
 
     char nombreUsuario[30];
 
@@ -232,15 +348,19 @@ int crearUsuario(){ /*se crea un usuario nuevo realizando las comprobaciones de 
             else{
 
                 fprintf(archivoCSV, ",%s", nombreUsuario);
-
                 fclose(archivoCSV);
 
             }
+
+            //luego reservamos memoria para un dato usuario y lo asignamos al usuario pasado por parametro
+            *usuario = crearUsuario(nombreUsuario);
 
         }
         else{
 
             printf("\nYa existe un usuario con este nombre registrado\n\n");
+            system("pause");
+            system("cls");
             return 0;
 
         }
@@ -249,6 +369,8 @@ int crearUsuario(){ /*se crea un usuario nuevo realizando las comprobaciones de 
     else{
 
         printf("\nEl nombre de usuario solo pude contener numeros y letras\n\n");
+        system("pause");
+        system("cls");
         return 0;
 
     }
@@ -261,8 +383,8 @@ int crearUsuario(){ /*se crea un usuario nuevo realizando las comprobaciones de 
 
 }
 
-void BusquedaPorGenero(HashMap * map){ 
-/*se realiza la busqueda en la base de datos de acuerdo al genero solicitado entregando todas las peliculas que correspondan al genero */
+void BusquedaPorGenero(HashMap * map){
+
     system("cls");
     printf("Ingrese el genero que desea buscar: ");
     char genero_[50];
@@ -279,13 +401,13 @@ void BusquedaPorGenero(HashMap * map){
         lista = peli->genero;
         char * gen = first(lista);
         if (gen!= NULL && strcmp(gen, genero_)==0){
-            printf("%s\n", peli->nombre);
+            showMovieInformation(peli);
         }
         else{
             while(gen!=NULL){
             gen=next(lista);
             if (gen!=NULL && strcmp(gen, genero_)==0){
-                printf("%s\n", peli->nombre);
+                showMovieInformation(peli);
             }
             }
         }
@@ -299,89 +421,262 @@ void BusquedaPorGenero(HashMap * map){
     system("cls");
 }
 
+void BusquedaPorDirector(HashMap *PelisDirector){
 
-void BusquedaPorDirector(HashMap *map){
-/*se busca en la base de datos la pelicula por nombre del director y se muestran por pantalla */    
-    system("cls");
-    printf("Ingrese el nombre y apellido del director que desea buscar: ");
-    char name[50];
+    char * director[50];
+    List * listaAux;
+    Pelicula * resultAux;
+    printf("Por favor ingrese el director que busca\n");
     fflush(stdin);
-    scanf("%[^\n]s", name);
+    scanf("%[^\n]s",director);
     fflush(stdin);
-    Pair * par = firstMap(map);
-    Pelicula * peli = par->value;
-    while(par!=NULL){
-        if (strcmp(peli->director, name)==0){
-            printf("%s\n", peli->nombre);
-        }
-        par = nextMap(map);
-        if (par!=NULL){
-          peli = par->value;
-        }
-        else break;
+
+    if (firstMap(PelisDirector) == NULL){
+        printf("No hay peliculas guardadas en la base de datos\n");
+        return;
     }
-    system("pause");
-    system("cls");
+
+    if (searchMap(PelisDirector,director)==NULL){
+        printf("El director ingresado no pertenece a alguna pelicula de la base de datos\n");
+        return;
+    }
+    listaAux= searchMap(PelisDirector,director);
+
+    printf("Pelicula/as con director %s\n " , director);
+
+    resultAux= first(listaAux);
+
+
+    while (resultAux != NULL){
+        showMovieInformation(resultAux);
+        //if (->next == NULL)return;
+        resultAux= next(listaAux);
+
+    }
+    printf("\n\n");\
+    return;
 }
 
-void BusquedaPorAnio(TreeMap * map){
-/*esta funcion busca las peliculas por el año y da la opcion de buscarlas por año especifico o entrega todas las peliculas ordenadas de menor a mayor*/
+void showMovieInformation(Pelicula * peli){
+
+
+  // this function is very important to our program, because it's used in almost all the functions that search by a category
+    printf("\n");
+    printf("Nombre de la pelicula: %s\n", peli->nombre);
+    printf("Anio de la Pelicula: %d\n", peli->anio);
+
+    printf("Director/es de la Pelicula:%s\n",peli->director); //print the pokemon types
+
+       printf("Clasificacion de la pelicula: %s\n", peli->clasificacionEdad);
+
+    printf("Genero/s de la Pelicula:\n"); //print the pokemon types
+
+    char * type = first(peli->genero); //access to the List of types
+
+    while(type){
+
+        printf("    %s\n", type); //print the types
+        type = next(peli->genero); //proceed to next type
+
+    }
+
+     printf("Ranking de la pelicula: %s\n", peli->ranking);
+
+
+
+}
+
+void peliculasfab(HashMap * Pelis,TreeMap * rankingTree,TreeMap* Peliwis,HashMap* clasifMap,HashMap*PelisDirector){
+
+
     system("cls");
+
+    printf("\nWhat do you want to do?\n");
+    printf("1: Importar Lista con sus peliculas favoritas\n");
+    printf("2: Ingresar Manualmente pelicula\n");
+
+
     int option;
-    int anio_;
+    do{
+
+        scanf("%d", &option);
+
+        if(option != 1 && option != 2){
+            printf("Opcion invalida, por favor ingrese una opcion valida. \n");
+        }
+
+    }while(option != 1 && option != 2);
+
+
+    if(option == 1){
+    system("cls");
+    printf("Por favor ingrese el nombre del archivo ");
+    char name[50]; //the name of the file that has the games
+    FILE * fp;
 
     do{
-            printf("Busqueda por anio: \n");
-            printf("Opcion 1: Busqueda por un anio en particular \n");
-            printf("Opcion 2: Mostrar todas las peliculas de la base de datos ordenados de menor a mayor \n");
-            scanf("%d",&option);
-            if ((option > 2) || (option < 1)){
-                printf("Ingrese una opcion valida! \n");
+
+        fflush(stdin);
+        scanf("%[^\n]s", name);
+        fp = fopen( name , "r"); //opens the file in read
+        if (fp == NULL){
+            printf("Archivo Invalido, por favor ingrese un archivo valido! "); //if the file isn't valid this message will pop on the screen
+        }
+        fflush(stdin);
+
+    }while(fp == NULL);
+
+    char line [1024];
+
+    while( fgets(line, 1023, fp) != NULL ){  //read and get every field of the csv file
+
+        char * nombre = get_csv_field(line, 0);
+        int anio = atoi(get_csv_field(line, 1));
+
+        List * Geneross = create_list();
+
+        char * director = get_csv_field(line, 2);
+        char * clasificacionEdad = get_csv_field(line, 3);
+        char * Genero = get_csv_field(line, 4);
+        getTypes(Geneross, Genero);
+
+        char * ranking = get_csv_field(line, 5);
+
+        Pelicula * nuevaPeli = crearPeli(nombre,anio, director, clasificacionEdad,Geneross, ranking);
+              if (searchMap(Pelis, nombre) == NULL){
+            insertMap(Pelis, nuevaPeli->nombre ,nuevaPeli);
+
+            if (searchTreeMap(rankingTree, ranking) == NULL){
+                List * listaRanking =create_list();
+                push_back(listaRanking, nuevaPeli);
+                insertTreeMap(rankingTree, ranking, listaRanking);
             }
-            if (option == 1){
-                do{
-                    printf("Ingrese el anio que desea buscar: ");
-                    fflush(stdin);
-                    scanf("%d",&anio_);
-                    fflush(stdin);
-                    if (searchTreeMap(map, anio_)== NULL){
-                        printf("No se encontro el anio, ingrese otro anio \n");
-                    }
+            else{
+                List * auxList= searchTreeMap(rankingTree, ranking);
+                push_back(auxList, nuevaPeli);
 
-                }while(searchTreeMap(map,anio_)==NULL);
+            }
 
-                void * name = searchTreeMap(map, anio_);
-                if (name==NULL) break;
-                while(isEqual(map,map->current->key,anio_)){
-                    printf("Anio: %d \t Nombre pelicula: %s\n",map->current->key, name);
-                    name = nextTreeMap(map);
-
-                }
+            if (searchMap(clasifMap, clasificacionEdad) == NULL ){
+                List * listaClasif = create_list();
+                push_back(listaClasif, nuevaPeli);
+                insertMap(clasifMap, clasificacionEdad, listaClasif);
+            }
+            else{
+                List * auxList= searchMap(clasifMap, clasificacionEdad);
+                push_back(auxList, nuevaPeli);
+            }
 
 
+        }
+        insertTreeMap(Peliwis,anio , nombre);
+}
+    printf("Sus Peliculas se importaron exitosamente (^_^) "); //message that pops out on the window if all the pokemon were imported correctly
 
+    }
+
+    else{
+
+
+    char * nombre = (char *) malloc (30 * sizeof(char));
+    int anio;
+    char * director = (char *) malloc (30 * sizeof(char));
+    char * clasificacionEdad = (char *) malloc (30 * sizeof(char));
+    List * generos = create_list();
+    char * ranking = (char *) malloc (30 * sizeof(char));
+
+
+    printf("Por favor ingrese el nombre de la Pelicula \n");
+    fflush(stdin);
+    scanf("%[^\n]s",nombre);
+    fflush(stdin);
+
+    printf("Por favor ingrese el anio de la pelicula\n");
+    scanf("%d", &anio);
+    fflush(stdin);
+
+    printf("Por favor ingrese el Director de la Pelicula \n");
+    fflush(stdin);
+    scanf("%[^\n]s",director);
+    fflush(stdin);
+
+    printf("Por favor ingrese la clasificacion de edad de la Pelicula \n");
+    fflush(stdin);
+    scanf("%s",clasificacionEdad);
+    fflush(stdin);
+
+
+    printf("\nCuantos generos tiene la pelicula? ");
+        int cont;
+        scanf("%d", &cont);
+        int i = 1;
+
+        while(cont>0){
+
+            char * genero = (char *) malloc (20 * sizeof(char)); ; //reads all the types entered by the user
+            printf("Ingrese genero numero %d: ", i);
+            fflush(stdin);
+            scanf("%[^\n]s", genero);
+            fflush(stdin);
+
+            push_back(generos, genero);
+
+            i++;
+            cont--;
+        }
+     printf("Por favor ingrese el Ranking de la Pelicula \n");
+    fflush(stdin);
+    scanf("%s",ranking);
+    fflush(stdin);
+
+    Pelicula * nuevaPeli = crearPeli(nombre,anio, director, clasificacionEdad,generos, ranking);
+        if (searchMap(Pelis, nombre) == NULL){
+            insertMap(Pelis, nuevaPeli->nombre ,nuevaPeli);
+
+            if (searchTreeMap(rankingTree, ranking) == NULL){
+                List * listaRanking =create_list();
+                push_back(listaRanking, nuevaPeli);
+                insertTreeMap(rankingTree, ranking, listaRanking);
+            }
+            else{
+                List * auxList= searchTreeMap(rankingTree, ranking);
+                push_back(auxList, nuevaPeli);
+
+            }
+
+            if (searchMap(clasifMap, clasificacionEdad) == NULL ){
+                List * listaClasif = create_list();
+                push_back(listaClasif, nuevaPeli);
+                insertMap(clasifMap, clasificacionEdad, listaClasif);
+            }
+            else{
+                List * auxList= searchMap(clasifMap, clasificacionEdad);
+                push_back(auxList, nuevaPeli);
+            }
+                        if (searchMap(PelisDirector, director) == NULL ){
+                List * listadir = create_list();
+                push_back(listadir, nuevaPeli);
+                insertMap(PelisDirector, director, listadir);
 
             }
             else{
-                printf("Peliculas ordenadas de menor a mayor: \n");
-                imprimemeEnOrden(map->root);
+                List * auxLista = searchMap(PelisDirector, director);
+                push_back(auxLista, nuevaPeli);
             }
+        }
+        insertTreeMap(Peliwis,anio , nombre);
 
-    }while ((option > 2) || (option < 1));
-
-    system("pause");
-    system("cls");
 }
-
+}
 
 void getTypes(List * typesList, char * types){
 
-/*función que obtiene los diferentes tipos de peliculas*/
+//function that get the different types of the game :)
 
     char caracter[2] = "/";
     char * type;
 
-    type = strtok(types, caracter); /*separa la cadena si hay más de un tipo*/
+    type = strtok(types, caracter); //separates the string if there's more than one type//
     while(type != NULL){
 
         if(type[0] == ' '){
@@ -404,37 +699,59 @@ void getTypes(List * typesList, char * types){
 
 }
 
+void busquedaPornombre(HashMap * Pelis){
 
+    char * name[50];
+    Pelicula * aux;
+    printf("Por favor ingrese el Nombre de la Pelicula\n");
+    fflush(stdin);
+    scanf("%[^\n]s",name);
+    fflush(stdin);
 
+    if (Pelis == NULL){
+        printf("No hay peliculas guardadas en la base de datos\n");
+        return;
+    }
+    if (searchMap(Pelis,name)==NULL){
+        printf("El nombre ingresado no pertenece a alguna pelicula de la base de datos\n");
+        return;
+    }
+    aux= searchMap(Pelis,name);
 
+    if (aux != NULL){
+        showMovieInformation(aux);
+    }
+    printf("\n\n");
+    system("pause");
+    system("cls");
+    return;
+}
 
+Pelicula * crearPeli(char * nombre, int  anio,  char *  director, char  * clasificacionEdad,List * genero, char *  ranking){
 
-Pelicula * crearPeli(char * nombre,  List * genero, char *  director , char *  ranking, char  * clasificacionEdad, int  anio){
-
-    Pelicula * peliwi = (Pelicula *) malloc (sizeof(Pelicula));
+    Pelicula * peliwi = (Pelicula *) malloc ( sizeof(Pelicula));
     peliwi->nombre = nombre;
-    peliwi->genero = genero;
-    peliwi->director = director;
-    peliwi->ranking = ranking;
-    peliwi->clasificacionEdad = clasificacionEdad;
     peliwi->anio = anio;
+    peliwi->director = director;
+    peliwi->clasificacionEdad = clasificacionEdad;
+    peliwi->genero = genero;
+    peliwi->ranking = ranking;
     return peliwi;
-
 
 }
 
-void importarpelis(HashMap* Pelis, TreeMap *ranking, TreeMap *peliwis){
-    /*funcion muy importante que importa las peliculas desde el archivo csv*/
+void importarpelis(HashMap* Pelis, TreeMap *rankingTree, TreeMap *peliwis, HashMap * clasifMap,HashMap* PelisDirector){
+    //very important function that imports all the games from a csv file
 
     system("cls");
 
     FILE * fp;
 
-        fp = fopen("Pelis.txt", "r"); /*abre el archivo para lectura*/
+        fp = fopen("pelis.txt", "r"); //opens the file in read
 
     char line [1024];
 
-    while( fgets(line, 1023, fp) != NULL ){  /*lee y obtiene todos los campos del archivo csv*/
+    while( fgets(line, 1023, fp) != NULL ){  //read and get every field of the csv file
 
         char * nombre = get_csv_field(line, 0);
         int anio = atoi(get_csv_field(line, 1));
@@ -447,22 +764,32 @@ void importarpelis(HashMap* Pelis, TreeMap *ranking, TreeMap *peliwis){
         getTypes(Geneross, Genero);
 
         char * ranking = get_csv_field(line, 5);
-        Pelicula * nuevaPeli = crearPeli(nombre,Geneross, director, ranking, clasificacionEdad, anio);
-        if (searchMap(Pelis, nombre) == NULL){
+
+         Pelicula * nuevaPeli = crearPeli(nombre,anio, director, clasificacionEdad,Geneross, ranking);
+
             insertMap(Pelis, nuevaPeli->nombre ,nuevaPeli);
-            
+
             if (searchTreeMap(rankingTree, ranking) == NULL){
                 List * listaRanking =create_list();
                 push_back(listaRanking, nuevaPeli);
                 insertTreeMap(rankingTree, ranking, listaRanking);
             }
             else{
-                List * auxList= searchTreeMap(rankingTree, ranking);
-                push_back(auxList, nuevaPeli);
-               
-            }
+                List * auxLisst= searchTreeMap(rankingTree, ranking);
+                push_back(auxLisst, nuevaPeli);
 
-            if (searchMap(clasifMap, clasificacionEdad) == NULL ){
+            }
+            if (searchMap(PelisDirector, director) == NULL ){
+                List * listadir = create_list();
+                push_back(listadir, nuevaPeli);
+                insertMap(PelisDirector, director, listadir);
+
+            }
+            else{
+                List * auxLista = searchMap(PelisDirector, director);
+                push_back(auxLista, nuevaPeli);
+            }
+           if (searchMap(clasifMap, clasificacionEdad) == NULL ){
                 List * listaClasif = create_list();
                 push_back(listaClasif, nuevaPeli);
                 insertMap(clasifMap, clasificacionEdad, listaClasif);
@@ -471,13 +798,56 @@ void importarpelis(HashMap* Pelis, TreeMap *ranking, TreeMap *peliwis){
                 List * auxList= searchMap(clasifMap, clasificacionEdad);
                 push_back(auxList, nuevaPeli);
             }
-        }
+
         insertTreeMap(peliwis,anio , nombre);
+
     }
+
+}
+
+void agregarFavorito(Usuario * usuario){
+
+    char peliculaFavorita[50];
+    char directorFavorito[30];
+    char generoFavorito[30];
+    char actorFavorito[30];
+    char clasificacionFavorita[30];
+
+    printf("Para llenar sus favoritos le pediremos los siguientes datos: \n\n");
+
+    printf("Ingrese el nombre de su pelicula favorita: ");
+    fflush(stdin);
+    scanf("%[^\n]s", peliculaFavorita);
+    printf("Ahora ingrese el nombre de su director favorito: ");
+    fflush(stdin);
+    scanf("%[^\n]s", directorFavorito);
+    printf("Ahora ingrese el nombre de su genero favorito: ");
+    fflush(stdin);
+    scanf("%[^\n]s", generoFavorito);
+    printf("Ahora ingrese el nombre de su actor favorito: ");
+    fflush(stdin);
+    scanf("%[^\n]s", actorFavorito);
+    printf("Ahora ingrese el nombre de su clasificacion favorita: ");
+    fflush(stdin);
+    scanf("%[^\n]s", clasificacionFavorita);
+
+    char nombreArchivo[60];
+    strcpy(nombreArchivo, "Usuarios/");
+    strcat(nombreArchivo, usuario->username); //insertaremos en el nombre del archivo el nombre del usuario
+    strcat(nombreArchivo, "Favoritos.csv");
+    FILE * fp = fopen(nombreArchivo, "w");
+
+    fprintf(fp, "%s,%s,%s,%s,%s", peliculaFavorita, directorFavorito, generoFavorito, actorFavorito, clasificacionFavorita);
+    fclose(fp);
+
+    printf("\nLos datos han sido agregados correctamente, ahora puede buscar amigos\n\n");
+
+    system("pause");
+    system("cls");
+
 }
 
 void funcionRanking (TreeMap * rankingTree){
-/*se entrega un submenu que permite buscar las peliculas por un ranking de mayor a menor o en su defecto por una calificaion especifica*/
     int opcion;
     printf("******Submenu de ranking******\n\n");
     printf("(1) Para mostrar las peliculas mediante un ranking especifico\n");
@@ -497,11 +867,14 @@ void funcionRanking (TreeMap * rankingTree){
     else{
         rankingMayMen(rankingTree);
     }
+        printf("\n\n");
+    system("pause");
+    system("cls");
     return;
 }
 
 void rankingDado (TreeMap * rankingTree){
-/*la funcion solicita ingresar el ranking y muestra si es que existe alguna pelicula que responda a esta puntuacion*/
+
     fflush(stdin);
     char * ranking[50];
     List * listaAux;
@@ -518,6 +891,8 @@ void rankingDado (TreeMap * rankingTree){
     resultAux= first(listaAux);
     if (listaAux == NULL){
         printf("El ranking ingresado no pertenece a alguna pelicula de la base de datos\n");
+    system("pause");
+    system("cls");
         return;
     }
 
@@ -525,10 +900,12 @@ void rankingDado (TreeMap * rankingTree){
 
     resultAux= first(listaAux);
     while (resultAux != NULL){
-        showMovieInfo(resultAux);
+        showMovieInformation(resultAux);
         resultAux= next(listaAux);
     }
     printf("\n\n");
+    system("pause");
+    system("cls");
     return;
 
 }
@@ -536,36 +913,45 @@ void rankingDado (TreeMap * rankingTree){
 void rankingMayMen (TreeMap * rankingTree){
     printf("\n");
 
-    if (rankingTree == NULL) return; /*si el arbol esta vacio*/
-    Pelicula * auxPeli; /* auxVar para guardar información y mostrarla*/
+    if (rankingTree == NULL) return; // If tree is empty
+    Pelicula * auxPeli; //auxVar to save info and show it
     List * auxLista;
-    auxLista= lastTreeMap (rankingTree); /*obtiene el último valor, más alto del mapa*/
+    auxLista= lastTreeMap (rankingTree); //gets the last value, higher from map
+
     while (auxLista != NULL){
 
         auxPeli= first(auxLista);
         while(auxPeli != NULL){
-            showMovieInfo (auxPeli);
+            showMovieInformation(auxPeli);
             auxPeli= next(auxLista);
         }
-        auxLista= backTreeMap(rankingTree); /*Valor anterior, inferior al actual*/
+        auxLista= backTreeMap(rankingTree); //Previous value, lower than current
     }
-    printf("\n\n");
+        printf("\n\n");
+    system("pause");
+    system("cls");
     return;
 }
+
 void busquedaPorClasif (HashMap * clasifMap){
-/*esta funcion permite buscarlas peliculas segun la clasificacion de edad y de corroborar que la clasificacion ingresada exista*/
     char * clasif[50];
     List * listaAux;
     Pelicula * resultAux;
     printf("Por favor ingrese la clasificacion de edad mostrar peliculas\n");
-    scanf(" %s",&clasif);
+    scanf(" %s",clasif);
 
     if (clasifMap == NULL){
         printf("No hay peliculas guardadas en la base de datos\n");
+
+    system("pause");
+    system("cls");
         return;
     }
     if (searchMap(clasifMap,clasif)==NULL){
         printf("La clasificacion ingresada no pertenece a alguna pelicula de la base de datos\n");
+
+    system("pause");
+    system("cls");
         return;
     }
     listaAux= searchMap(clasifMap,clasif);
@@ -576,11 +962,114 @@ void busquedaPorClasif (HashMap * clasifMap){
 
 
     while (resultAux != NULL){
-        showMovieInfo(resultAux);
+        showMovieInformation(resultAux);
         //if (->next == NULL)return;
         resultAux= next(listaAux);
 
     }
-    printf("\n\n");\
+        printf("\n\n");
+    system("pause");
+    system("cls");
     return;
+}
+
+void amigos(Usuario * usuario){
+
+    system("cls");
+    int option;
+    char amiko[30];
+
+    do{
+
+        printf("Ingrese la opcion que desea hacer\n\n");
+        printf("Opcion 1: Agregar amigos por username \n");
+        printf("Opcion 2: Mostrar amigos \n\n");
+        scanf("%d",&option);
+
+        if ((option > 2) || (option < 1)){
+            printf("Ingrese una opcion valida! \n\n");
+        }
+
+
+    }while ((option > 2) || (option < 1));
+
+    if (option == 1){
+
+        printf("Ingrese el username del Unicornio amigo: ");
+        fflush(stdin);
+        scanf("%s",amiko);
+        fflush(stdin);
+        if (usuarioExiste(amiko)){
+
+            char nombreArchivo[70];
+            strcpy(nombreArchivo, "Usuarios/");
+            strcat(nombreArchivo, usuario->username);
+            strcat(nombreArchivo, ".csv");
+
+            FILE * fp = fopen(nombreArchivo, "r+");
+
+            if(fp == NULL){
+
+                printf("\nError\n\n");
+                return;
+
+            }
+
+            //para comprobar si es que el archivo está vacio o no
+            fseek (fp, 0, SEEK_END);
+            long lSize = ftell(fp);
+
+            //si es que esta vacio agregamos sin coma al principio
+            if(lSize == 0){
+
+                fprintf(fp, "%s", amiko);
+                fclose(fp);
+
+            }
+            else{
+
+                fprintf(fp, ",%s", amiko);
+                fclose(fp);
+
+            }
+
+            push_back(usuario->UnicornFriend, _strdup(amiko));
+            printf("\nEl usuario se ha agregado a la lista de amigos correctamente\n\n");
+
+        }
+        else{
+
+            printf("\nNo hemos encontrado ningun usuario con este nombre\n\n");
+
+        }
+
+    }
+    else{
+
+        char * amigo = first(usuario->UnicornFriend);
+
+        if(amigo == NULL){
+
+            printf("\nEl usuario aun no tiene amigos\n\n");
+            system("pause");
+            system("cls");
+            return;
+
+        }
+
+        printf("\nAmigos del usuario %s: \n\n", usuario->username);
+
+        while(amigo != NULL){
+            printf("Amigo: %s\n", amigo);
+            amigo = next(usuario->UnicornFriend);
+        }
+
+        printf("\n");
+
+    }
+
+    system("pause");
+    system("cls");
+
+
 }

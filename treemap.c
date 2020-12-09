@@ -4,20 +4,7 @@
 #include "treemap.h"
 
 typedef struct TreeNode TreeNode;
-
-struct TreeNode {
-    void* key;
-    void * value;
-    TreeNode * left;
-    TreeNode * right;
-    TreeNode * parent;
-};
-
-struct TreeMap {
-    TreeNode * root;
-    TreeNode * current;
-    int (*lower_than) (void* key1, void* key2);
-};
+typedef struct TreeMap TreeMap;
 
 int isEqual(TreeMap* tree, void* key1, void* key2){
     if(tree->lower_than(key1,key2)==0 &&
@@ -37,7 +24,7 @@ TreeNode * minimum(TreeNode * x){
 
 TreeNode * maximum(TreeNode * exe){ //This function return node with higher value from right
 
-    while (exe->right != NULL) 
+    while (exe->right != NULL)
     {
      exe = exe->right;
     }
@@ -233,12 +220,12 @@ void * backTreeMap(TreeMap * tree){ //Go to the previous node with high value, n
 
     TreeNode * aux = tree->current->parent; //Aux gets the parent value
 
-    while (aux != NULL && tree->current == aux->left){ 
-        tree->current = aux; 
+    while (aux != NULL && tree->current == aux->left){
+        tree->current = aux;
         aux= aux->parent;
     }
-    tree->current = aux; //refresh current to work in other functions 
-    if (aux == NULL ) return NULL; 
+    tree->current = aux; //refresh current to work in other functions
+    if (aux == NULL ) return NULL;
 
     return aux->value; //Return the value found
 
@@ -248,13 +235,13 @@ void * backTreeMap(TreeMap * tree){ //Go to the previous node with high value, n
 void * lastTreeMap(TreeMap * tree) { //This function return the higher value (key) from tree.
     if (tree == NULL || tree->root == NULL) return NULL; //Check if there's info in tree and if root exist
 
-    TreeNode * aux = tree->root; //Aux to save root 
+    TreeNode * aux = tree->root; //Aux to save root
 
     tree->current = maximum(aux); //Current gets the function value
 
     if (tree->current == NULL) return NULL;
 
-    return tree->current->value; 
+    return tree->current->value;
 }
 
 void imprimemeEnOrden(TreeNode * node){ //el nodo tiene que ser la raiz del arbol
@@ -266,4 +253,3 @@ void imprimemeEnOrden(TreeNode * node){ //el nodo tiene que ser la raiz del arbo
 
      imprimemeEnOrden(node->right);
 }
-

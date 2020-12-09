@@ -4,15 +4,23 @@
 #include "hashmap.h"
 #include "funciones.h"
 #include "treemap.h"
+#include <stdbool.h>
 
 int main()
 {
 
     HashMap * Pelis = createMap(500);
-    //HashMap * rankingMap = createMap(500);
+    char ListadeUsuarios[500];
+    bool t = true;
+    Usuario * usuario = NULL;
     TreeMap * rankingTree = createTreeMap(lower_than_string);
+    HashMap * clasifMap = createMap(500);
     TreeMap * Peliwis = createTreeMap(lower_than_int);
-    importarpelis(Pelis, rankingTree, Peliwis);
+    HashMap * PelisDirector= createMap(500);
+
+
+    importarpelis(Pelis, rankingTree, Peliwis,clasifMap,PelisDirector);
+
 
     int opcion = 1;
     int salir = 0;
@@ -23,11 +31,13 @@ int main()
        printf("Opcion 1: Ingresar si es que ya eres un usuario existente \n\n");
        printf("Opcion 2: Crea un usuario nuevo el cual nombre debe ser alfanumero y UNICO, \n");
        printf("no pueden haber dos usuarios con el mismo nombre. \n\n");
-       printf("Opcion 1 <3 : Ingresar\n");
-       printf("Opcion 2 <3 : Crear Usuario\n\n");
-       printf("Ingrese una opcion: ");
-       
-       scanf("%d", &opcion);
+
+        printf("Opcion 1 <3 : Ingresar\n");
+        printf("Opcion 2 <3 : Crear Usuario\n\n");
+
+        printf("Ingrese una opcion: ");
+
+        scanf("%d", &opcion);
 
         if(opcion != 1 && opcion != 2){
 
@@ -40,11 +50,10 @@ int main()
 
             switch(opcion){
 
-                case 1: salir = ingresarUsuario();
+                case 1: salir = ingresarUsuario(&usuario);
                 break;
-                case 2: salir = crearUsuario();
+                case 2: salir = nuevoUsuario(&usuario);
                 break;
-                    
 
             }
 
@@ -58,43 +67,66 @@ int main()
 
         //our menu to print all our options :D
         printf("\nBienvenides al menu principal de El Unicornio cinefilo, que desea hacer?  \n\n");
-        printf("Opcion 1 <3 : Sus peliculas favoritas! \n");
+        printf("Opcion 1 <3 : Su lista de peliculas \n");
         printf("Opcion 2 <3 : Busqueda de peliculas por genero \n");
         printf("Opcion 3 <3 : Busqueda de peliculas por anio \n");
         printf("Opcion 4 <3 : Busqueda de peliculas por director \n");
         printf("Opcion 5 <3 : Busqueda de peliculas por nombre \n");
         printf("Opcion 6 <3 : Busqueda de peliculas por clasificacion \n");
-        printf("Opcion 7 <3 : Busqueda de peliculas por Rating  \n");
-        printf("Opcion 8 <3 : Busqueda de amigos \n");
-        printf("Opcion 9 <3 : Cerrar sesion \n");
-        do{
+        printf("Opcion 7 <3 : Busqueda de peliculas por Ranking  \n");
+        printf("Opcion 8 <3 : Agregar favoritos\n");
+        printf("Opcion 9 <3 : Amigos\n");
+        printf("Opcion 10 <3 : Cerrar sesion \n");
+        scanf("%d", &option);
+        while((option>10) || (option<1)){
+            printf("Ingrese una opcion valida\n");
             scanf("%d", &option);
-            if ((option > 9) || (option < 1))
-               printf("Opcion Invalida, por favor seleccione una opcion valida del menu <3 \n");
-            else{
-                if (option == 4){
-                    BusquedaPorDirector(Pelis);
-                }
-                if (option == 2){
-                    BusquedaPorGenero(Pelis);
-                }
+        }
+        if (option == 4){
+            printf("\n ************************************************************************** \n");
+
+            BusquedaPorDirector(PelisDirector);
+            printf("\n ************************************************************************** \n");
+        }
+        if (option == 2){
+            BusquedaPorGenero(Pelis);
+        }
+        if (option == 1){
+            peliculasfab(Pelis, rankingTree, Peliwis,clasifMap,PelisDirector);
+
+        }
+
+        if (option == 5){
+            busquedaPornombre( Pelis);
+        }
+
+        if(option == 8){
+            agregarFavorito(usuario);
+        }
+
+        if(option == 9){
+
+            amigos(usuario);
+
+        }
+
                 if (option == 7){
                     funcionRanking(rankingTree);
                 }
                 if (option == 3){
                     BusquedaPorAnio(Peliwis);
                 }
-                if (option == 6){
+                         if (option == 6){
                     busquedaPorClasif(clasifMap);
                 }
 
-            }
-
-        }while ((option > 9) || (option < 1));  //this "While" validates that the option entered is valid!
-
-        if(option == 9){
+        if(option == 10){
             break;  //breaks the program
         }
-    }
+     }
+
+
+
+
     return 0;
 }

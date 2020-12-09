@@ -101,3 +101,263 @@
 	<string.h>
 	"treemap.h"
 
+1607013406 source:c:\users\macar\desktop\proyecto-unicornios-master\funciones.c
+	"funciones.h"
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<dirent.h>
+
+1607010906 c:\users\macar\desktop\proyecto-unicornios-master\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	"list.h"
+	"hashmap.h"
+	"treemap.h"
+
+1606604943 c:\users\macar\desktop\proyecto-unicornios-master\list.h
+	<stdlib.h>
+	<stdio.h>
+
+1606604943 c:\users\macar\desktop\proyecto-unicornios-master\hashmap.h
+
+1606604943 c:\users\macar\desktop\proyecto-unicornios-master\treemap.h
+
+1607006169 source:c:\users\macar\desktop\proyecto-unicornios-master\hashmap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"hashmap.h"
+
+1606604943 source:c:\users\macar\desktop\proyecto-unicornios-master\list.c
+	"list.h"
+	<stdlib.h>
+	<assert.h>
+
+1607012794 source:c:\users\macar\desktop\proyecto-unicornios-master\main.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+	"hashmap.h"
+	"funciones.h"
+	"treemap.h"
+	<stdbool.h>
+
+1606604943 source:c:\users\macar\desktop\proyecto-unicornios-master\treemap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"treemap.h"
+
+1607006169 source:c:\users\ideapad 330\desktop\proyecto-unicornios-master\hashmap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"hashmap.h"
+
+1606604943 c:\users\ideapad 330\desktop\proyecto-unicornios-master\hashmap.h
+
+1606604943 source:c:\users\ideapad 330\desktop\proyecto-unicornios-master\list.c
+	"list.h"
+	<stdlib.h>
+	<assert.h>
+
+1606604943 c:\users\ideapad 330\desktop\proyecto-unicornios-master\list.h
+	<stdlib.h>
+	<stdio.h>
+
+1606604943 source:c:\users\ideapad 330\desktop\proyecto-unicornios-master\treemap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"treemap.h"
+
+1606604943 c:\users\ideapad 330\desktop\proyecto-unicornios-master\treemap.h
+
+1607374482 source:c:\users\ideapad 330\desktop\proyecto-unicornios-master\main.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+	"hashmap.h"
+	"funciones.h"
+	"treemap.h"
+	<stdbool.h>
+
+1607374091 c:\users\ideapad 330\desktop\proyecto-unicornios-master\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	"list.h"
+	"hashmap.h"
+	"treemap.h"
+
+1607375489 source:c:\users\ideapad 330\desktop\proyecto-unicornios-master\funciones.c
+	"funciones.h"
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<dirent.h>
+
+1607465470 source:c:\users\macar\desktop\proyecto unicorns final~\funciones.c
+	"funciones.h"
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<dirent.h>
+
+1607459889 c:\users\macar\desktop\proyecto unicorns final~\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	"list.h"
+	"hashmap.h"
+	"treemap.h"
+
+1606604943 c:\users\macar\desktop\proyecto unicorns final~\list.h
+	<stdlib.h>
+	<stdio.h>
+
+1607463759 c:\users\macar\desktop\proyecto unicorns final~\hashmap.h
+
+1607381253 c:\users\macar\desktop\proyecto unicorns final~\treemap.h
+
+1607465599 source:c:\users\macar\desktop\proyecto unicorns final~\hashmap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"hashmap.h"
+
+1606604943 source:c:\users\macar\desktop\proyecto unicorns final~\list.c
+	"list.h"
+	<stdlib.h>
+	<assert.h>
+
+1607465227 source:c:\users\macar\desktop\proyecto unicorns final~\main.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+	"hashmap.h"
+	"funciones.h"
+	"treemap.h"
+	<stdbool.h>
+
+1607381281 source:c:\users\macar\desktop\proyecto unicorns final~\treemap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"treemap.h"
+
+1607465599 source:c:\users\ideapad 330\desktop\proyecto unicorns final~\hashmap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"hashmap.h"
+
+1607463759 c:\users\ideapad 330\desktop\proyecto unicorns final~\hashmap.h
+
+1606604943 source:c:\users\ideapad 330\desktop\proyecto unicorns final~\list.c
+	"list.h"
+	<stdlib.h>
+	<assert.h>
+
+1606604943 c:\users\ideapad 330\desktop\proyecto unicorns final~\list.h
+	<stdlib.h>
+	<stdio.h>
+
+1607465227 source:c:\users\ideapad 330\desktop\proyecto unicorns final~\main.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+	"hashmap.h"
+	"funciones.h"
+	"treemap.h"
+	<stdbool.h>
+
+1607459889 c:\users\ideapad 330\desktop\proyecto unicorns final~\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	"list.h"
+	"hashmap.h"
+	"treemap.h"
+
+1607381253 c:\users\ideapad 330\desktop\proyecto unicorns final~\treemap.h
+
+1607381281 source:c:\users\ideapad 330\desktop\proyecto unicorns final~\treemap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"treemap.h"
+
+1607478221 source:c:\users\ideapad 330\desktop\proyecto unicorns final~\funciones.c
+	"funciones.h"
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<dirent.h>
+
+1607478221 source:c:\users\macar\desktop\proyecto unicorns final~awa~\funciones.c
+	"funciones.h"
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<dirent.h>
+
+1607459889 c:\users\macar\desktop\proyecto unicorns final~awa~\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	"list.h"
+	"hashmap.h"
+	"treemap.h"
+
+1606604943 c:\users\macar\desktop\proyecto unicorns final~awa~\list.h
+	<stdlib.h>
+	<stdio.h>
+
+1607463759 c:\users\macar\desktop\proyecto unicorns final~awa~\hashmap.h
+
+1607381253 c:\users\macar\desktop\proyecto unicorns final~awa~\treemap.h
+
+1607465599 source:c:\users\macar\desktop\proyecto unicorns final~awa~\hashmap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"hashmap.h"
+
+1606604943 source:c:\users\macar\desktop\proyecto unicorns final~awa~\list.c
+	"list.h"
+	<stdlib.h>
+	<assert.h>
+
+1607465227 source:c:\users\macar\desktop\proyecto unicorns final~awa~\main.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+	"hashmap.h"
+	"funciones.h"
+	"treemap.h"
+	<stdbool.h>
+
+1607381281 source:c:\users\macar\desktop\proyecto unicorns final~awa~\treemap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"treemap.h"
+

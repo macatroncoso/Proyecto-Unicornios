@@ -10,62 +10,67 @@
 #include "treemap.h"
 
 
-typedef struct Pelicula
-{
+typedef struct Pelicula{
     char * nombre;
-    char * genero;
-    int anio;
-    int clasificacionEdad;
+     int anio;
     char * director;
+    char * clasificacionEdad;
+    List * genero;
     char * ranking;
 } Pelicula;
 
-typedef struct Usuario
-{
+typedef struct Usuario{
     char * username;
-    int password;
-    List * Peliculas;
     List * Favoritos;
     List * UnicornFriend;
-
 } Usuario;
 
  char *get_txt_field (char * , int );
 
 char * toString(int );
 
-int lower_than_string(void* , void* );
-
-int lower_than_int(void* , void* );
-
 void BusquedaPorGenero(HashMap *);
 
 void BusquedaPorDirector(HashMap *);
 
-void BusquedaPorAnio(TreeMap *);
+int lower_than_string(void* , void* );
 
-void cargarDatosUsuario(char *);
+int lower_than_int(void* , void* );
+//Pelis, rankingTree, Peliwis,clasifMap);
+
+void peliculasfab(HashMap *,TreeMap*,TreeMap*,HashMap*,HashMap*);
+
+void showMovieInformation(Pelicula * );
 
 void getTypes(List * , char * );
 
-Pelicula * crearPeli(char * ,  List * , char *   , char *  , char  * , int );
+void BusquedaPorAnio(TreeMap * );
 
-void importarpelis(HashMap*, TreeMap*, TreeMap * );
+Pelicula * crearPeli(char * , int ,  char * , char  *,List * , char * );
 
-//retorna 1 si ingresa correctamente, 0 en caso contario
-int ingresarUsuario();
+void searchByName(TreeMap * );
 
-//retorna 1 si el usuario se crea correctamente, 0 en caso contario
-int crearUsuario();
+void busquedaPorClasif (HashMap *);
 
-void rankingMayMen(TreeMap * );
+void busquedaPornombre(HashMap * );
+
+void rankingMayMen (TreeMap * );
 
 void rankingDado (TreeMap * );
 
-void funcionRanking (TreeMap * );
+void funcionRanking (TreeMap *);
 
-void showMovieInfo (Pelicula *);
+void showMovieInfo (Pelicula * ); //Muestra la info completa del dato.
 
-void busquedaPorClasif (HashMap *);
+void importarpelis(HashMap*,TreeMap*,TreeMap*,HashMap*,HashMap*);
+
+void cargarDatosUsuario(Usuario *);
+
+//retorna 1 si ingresa correctamente, 0 en caso contario
+int ingresarUsuario(Usuario **);
+
+//retorna 1 si el usuario se crea correctamente, 0 en caso contario
+int nuevoUsuario(Usuario **);
+
 
 #endif // funciones_h
